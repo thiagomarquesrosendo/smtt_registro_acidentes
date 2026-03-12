@@ -1,0 +1,123 @@
+NOMES PARA OS CAMPOS NO FORMULÁRIO
+
+----------------------------------------
+DADOS DO LOCAL DO ACIDENTE
+
+acidenteLogradouro
+acidentePontoReferencia
+acidenteBairro
+acidenteHorario
+
+----------------------------------------
+AGENTES QUE ATENDERAM A OCORRÊNCIA
+
+agentesOcorrencia
+
+----------------------------------------
+ENVOLVIDOS NO ACIDENTE
+
+XXXXXXXXXXX - acidenteQtdVeiculos
+XXXXXXXXXXX - acidenteQtdPedestres
+
+----------------------------------------
+TIPO DE ACIDENTE
+
+XXXXXXXXXXX - tipoAcidenteQtdTipos
+
+acidente
+colisaoTipo
+abalroamentoTipo
+atropelamentoTipo
+choqueTipo
+acidenteObs
+
+----------------------------------------
+GRAVIDADE DO ACIDENTE
+
+gravidadeTipo
+
+----------------------------------------
+DADOS DOS VEÍCULOS
+
+1) VEÍCULO 1
+
+veiculoTipo
+veiculoPlaca
+veiculoNomeCondutor
+veiculoNumeroOcupantes
+veiculoPossuiVitimas
+XXXXXXXXXXX - veiculoQtdVitimas
+
+        1) VÍTIMA 1
+
+        veiculoVitimaNome
+        veiculoVitimaCPF
+        veiculoVitimaTipo
+        veiculoVitimaMedico
+        veiculoVitimaMedicoTipo
+        veiculoVitimaHospital
+        veiculoVitimaHospitalNome
+
+        2) VÍTIMA 2 Idem
+
+        ( ... )
+
+veiculoRemovido
+veiculoRemovidoTipo
+veiculoRemovidoAuto
+veiculoResponsavel
+veiculoResponsavelNome
+veiculoResponsavelCPF
+
+
+2) VEÍCULO 2 Idem
+
+( ... )
+
+----------------------------------------
+DADOS DOS PEDESTRES
+
+1) VÍTIMA 1 Idem
+
+pedestreVitimaNome
+pedestreVitimaCPF
+pedestreVitimaTipo
+pedestreVitimaMedico
+pedestreVitimaMedicoTipo
+pedestreVitimaHospital
+pedestreVitimaHospitalNome
+
+2) VÍTIMA 2 Idem
+
+( ... )
+
+----------------------------------------
+MAIS DETALHES DO ACIDENTE
+
+detalhesFazerBO
+detalhesCPTRAN
+detalhesIML
+detalhesAcordo
+detalhesAcordoNumero
+
+----------------------------------------
+CLIMA
+
+climaTipo
+
+----------------------------------------
+SINALIZAÇÃO
+
+sinalizacaoTipo
+sinalizacaoTipoObs
+    
+----------------------------------------
+ILUMINAÇÃO
+
+iluminacaoTipo
+iluminacaoNoiteTipo
+
+----------------------------------------
+PAVIMENTO
+
+pavimentoTipo

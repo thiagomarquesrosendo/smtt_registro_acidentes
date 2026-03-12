@@ -1,0 +1,175 @@
+REGISTRO DE ACIDENTES DE TRÂNSITO
+
+----------------------------------------
+DADOS DO LOCAL DO ACIDENTE
+
+- Logradouro: 
+- Ponto de Referência: 
+- Bairro: 
+- Horário: 
+
+----------------------------------------
+AGENTES QUE ATENDERAM A OCORRÊNCIA
+
+- Nomes: 
+
+----------------------------------------
+ENVOLVIDOS NO ACIDENTE
+
+XXXXXXXXXXX - Quantidade veiculos ( )
+XXXXXXXXXXX - Quantidade pedestres ( )
+
+----------------------------------------
+TIPO DE ACIDENTE
+
+XXXXXXXXXXX - Quantidade de tipos de acidentes ( 1 )
+
+( ) Colisão
+    ( ) Frontal
+    ( ) Traseira
+    ( ) Engavetamento
+( ) Abalroamento
+    ( ) Lateral
+    ( ) Transversal
+( ) Atropelamento
+    ( ) Pedestre
+    ( ) Animal
+( ) Choque
+    ( ) Casa/Muro
+    ( ) Barranco/Defesa
+    ( ) Prisma
+    ( ) Veiculo Parado
+    ( ) Veiculo Estacionado
+    ( ) Poste
+    ( ) Árvore
+    ( ) Outros
+        _________________________
+( ) Capotamento
+( ) Tombamento
+( ) Saída de Pista
+( ) Quedas
+( ) Incêndio
+( ) Outros
+    _________________________
+
+----------------------------------------
+GRAVIDADE DO ACIDENTE
+
+( ) Apenas danos materiais
+( ) Com vítimas (apenas feridos)
+( ) Com vítimas fatais
+
+----------------------------------------
+DADOS DOS VEÍCULOS
+
+1) VEÍCULO 1
+
+- Tipo de Veículo:
+    ( ) Bicicleta
+    ( ) Motocicleta
+    ( ) Carro
+    ( ) Caminhão
+    ( ) Ônibus
+- Placa: 
+- Nome do Condutor: 
+- Número de Ocupantes ( )
+[ ] Possui vítimas
+XXXXXXXXXXX    - Quantidade de vítimas ( )
+
+        1) VÍTIMA 1
+
+        - Nome da Vitima:
+        - CPF: 
+        - Tipo de vítima:
+            ( ) Condutor
+            ( ) Passageiro
+        [ ] Atendimento Médico:
+            ( ) Samu
+            ( ) Bombeiro
+        [ ] Conduzido para o Hospital:
+            - Nome do Hospital:
+
+
+        2) VÍTIMA 2 - Idem
+
+        ( ... )
+
+[ ] Removido para o pátio
+    - Tipificação de Auto de Infração:
+        ( ) Licenciamento Atrasado
+        ( ) Estacionamnto irregular
+        ( ) Falta de equipamento obrigatório
+    - Número do Auto de Infração:
+[ ] Apresentação de responsável pelo veículo
+    - Nome:
+    - CPF:
+
+
+2) VEÍCULO 2 - Idem
+
+( ... )
+
+----------------------------------------
+DADOS DOS PEDESTRES
+
+1) VÍTIMA 1 - Idem
+
+( ... )
+
+2) VÍTIMA 2 - Idem
+
+( ... )
+
+----------------------------------------
+MAIS DETALHES DO ACIDENTE
+
+[ ] Orientados a fazerem B.O. (Boletim de Ocorrência)
+[ ] CPTRAN
+[ ] IML
+[ ] Acordo formal pré-processual
+     - Número do Acordo: 
+
+----------------------------------------
+CLIMA
+
+( ) Claro 
+( ) Chuvoso
+( ) Nublado
+
+----------------------------------------
+SINALIZAÇÃO
+
+( ) Existente
+( ) Precária
+( ) Inexistente
+( ) Deficiente
+    _________________________
+    
+----------------------------------------
+ILUMINAÇÃO
+
+( ) Amanhecer
+( ) Dia
+( ) Entardecer
+( ) Noite
+    ( ) Iluminada
+    ( ) Sem Iluminação
+
+----------------------------------------
+PAVIMENTO
+
+( ) Asfalto
+( ) Esburacado
+( ) Calçamento
+( ) Terra
+
+
+
+
+
+Principais Fatores Contribuintes:
+- Falta de atenção (principal causa).
+- Desobediência à sinalização.
+- Velocidade incompatível.
+- Ingestão de álcool.
+- Defeitos mecânicos.

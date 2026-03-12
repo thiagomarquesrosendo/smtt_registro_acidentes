@@ -1,0 +1,151 @@
+h1 {
+    font-size: 16px;
+    text-align: center;
+    margin: 5px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 15px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.fundoFormulario {
+    font-family: "Arial";
+    display: flex;
+    flex-direction: column;
+}
+
+.fundoFormulario div {
+    background-color: #eee;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.fundoFormulario button {
+    border-radius: 1em;
+    padding: 0.6em 1.8em;
+    font-weight: bold;
+}
+
+.add {
+    background-color: rgb(0, 219, 11);
+    margin: auto;
+    border-radius: 0.5em;
+    padding: 0.7em;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.del {
+    background-color: rgb(255, 73, 73);
+    margin-left: 60px;
+    padding: 0px;
+}
+
+.fundoFormulario input[type="text"], textarea {
+    background-color: rgb(255, 255, 255);
+    padding: 7px;
+    border-radius: 0.5em;
+    margin: 4px;
+    color: black;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+}
+
+.fundoFormulario input[type="number"] {
+    background-color: rgb(255, 255, 255);
+    padding: 7px;
+    border-radius: 0.5em;
+    margin: 4px;
+    color: black;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+}
+
+.fundoFormulario label {
+    margin: 2px;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    gap: 5;
+    padding-right: 30px;
+}
+
+.fundoFormulario .grupoRadio {
+    background-color: rgb(218, 218, 218);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    margin: 0px 0px 0px 30px;
+}
+
+.fundoFormulario .grupoRadio input[type="radio"] {
+    display: flex;
+    flex-direction: row;
+    gap: 10;
+}
+
+.fundoFormulario .grupoForm {
+    background-color: rgb(218, 218, 218);
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    margin: 0px 0px 0px 30px;
+}
+
+.fundoFormulario .grupoForm div {
+    background-color: rgb(218, 218, 218);
+    border: none;
+}
+
+.fundoFormulario .grupoForm div .grupoRadio {
+    background-color: #eee;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    margin: 0px 0px 0px 30px;
+}
+
+.fundoFormulario .grupoForm div .grupoInput {
+    flex-wrap: wrap;
+    border-radius: 10px;
+    margin: 0px 0px 0px 30px;
+}
+
+.fundoFormulario div span {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    display: flex;
+}
+
+
+.fundoFormulario div.lista {
+    margin: 5px 20px;
+}
+
+.fundoFormulario div.lista div.titulo {
+    display: flex;
+    flex-direction: row;
+    padding: 0px;
+    margin: 10px;
+    border: none;
+}
+
+.fundoFormulario div.lista div.titulo h3 {
+    font-weight: bold;
+    padding: 0px;
+    margin: 10px 30px;
+}

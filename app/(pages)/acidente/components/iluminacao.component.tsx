@@ -1,43 +1,52 @@
 'use client'
 
-import { OcultarObjetosFormulario } from "../hooks/ocultar-objetos-formulario.hook";
+import { Dispatch, SetStateAction } from "react";
+import { AcidenteDTO } from "../dto/Acidente.dto";
+import { IluminacaoHook } from "../hooks/iluminacao.hook";
 
-export interface ChangeHandlerProps {
-    onChangeHandler: React.ChangeEventHandler<HTMLInputElement>;
+export interface IluminacaoProps {
+    form: AcidenteDTO;
+    setForm: (acidente: Dispatch<SetStateAction<AcidenteDTO>>) => void;
 }
 
-export default function Iluminacao(props: ChangeHandlerProps) {
+export default function Iluminacao(props: IluminacaoProps) {
 
-    const {isVisible, toggleVisibility} = OcultarObjetosFormulario(16, 16);
+    const { form, setForm } = props;
+    const { handleChangeInput } = IluminacaoHook(form, setForm);
 
     return (
         <div>
             <label>
-                <input type="radio" name="iluminacao" value="Amanhecer" 
-                    onChange={props.onChangeHandler} />Amanhecer
+                <input type="radio" name="iluminacao" value="Amanhecer" required 
+                    onChange={handleChangeInput} />Amanhecer
             </label>
             <label>
-                <input type="radio" name="iluminacao" value="Dia" 
-                    onChange={props.onChangeHandler} />Dia
+                <input type="radio" name="iluminacao" value="Dia" required 
+                    onChange={handleChangeInput} />Dia
             </label>
             <label>
-                <input type="radio" name="iluminacao" value="Entardecer" 
-                    onChange={props.onChangeHandler} />Entardecer
+                <input type="radio" name="iluminacao" value="Entardecer" required 
+                    onChange={handleChangeInput} />Entardecer
             </label>
             <label>
-                <input type="radio" name="iluminacao" value="Noite" 
-                    onChange={props.onChangeHandler}
-                     onClick={(e) => toggleVisibility(16, e)} />Noite
+                <input type="radio" name="iluminacao" value="Noite" required 
+                    onChange={handleChangeInput} />Noite
             </label>
 
-            <div className="grupoForm" style={{ display: isVisible[16] ? 'block' : 'none' }}>
-                <label>
-                    <input type="radio" name="iluminacaoNoite" value="Iluminada" onChange={props.onChangeHandler} />Iluminada
-                </label>
-                <label>
-                    <input type="radio" name="iluminacaoNoite" value="Sem Iluminação" onChange={props.onChangeHandler} />Sem Iluminação
-                </label>
-            </div>
+            { form.iluminacao === "Noite" ? (
+                <div className="nivel1">
+                    <label>
+                        <input type="radio" name="iluminacaoNoite" value="Iluminada" required 
+                            onChange={handleChangeInput} />Iluminada
+                    </label>
+                    <label>
+                        <input type="radio" name="iluminacaoNoite" value="Sem Iluminação" required 
+                            onChange={handleChangeInput} />Sem Iluminação
+                    </label>
+                </div>
+            ) : (
+                <></>
+            )}
         </div>
     );
 }

@@ -2,8 +2,8 @@ export class VitimaDTO {
     nomeVitima?: string;
     cpfVitima?: string;
     tipoVitima?: string;
-    medicoVitima?: string;
+    medicoVitima?: boolean;
     medicoTipoVitima?: string;
-    hospitalVitima?: string;
+    hospitalVitima?: boolean;
     hospitalNomeVitima?: string;
 }

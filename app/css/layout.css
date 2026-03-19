@@ -49,16 +49,31 @@ aside nav {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    font-weight: bold;
     gap: 10;
     padding: 0.4em;
 }
 
-aside nav .link {
-    background-color: rgb(241, 228, 51);
-    padding: 0.3em 0.7em;
-    border: 1px solid rgb(238, 227, 68);
+aside nav span {
     border-radius: 10px;
+    display: flex;
+    align-items: center;        
+}
+
+aside nav span:nth-child(1) {
+    margin-left: 20px;
+}
+
+aside nav span:nth-child(2) {
+    font-weight: bold;
+}
+
+aside nav button {
+    background-color: rgb(248, 238, 93);
+    padding: 0.5em 0.9em;
+    border: 1px solid rgb(238, 228, 83);
+    border-radius: 18px;
+    margin: 5px 0px 5px 40px;
+    text-transform: uppercase;
 }
 
 

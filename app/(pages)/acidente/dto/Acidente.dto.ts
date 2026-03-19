@@ -1,6 +1,5 @@
 import { PedestreDTO } from "./Pedestre.dto";
 import { VeiculoDTO } from "./Veiculo.dto";
-import { VitimaDTO } from "./Vitima.dto";
 
 export class AcidenteDTO {
     logradouro?: string;
@@ -20,7 +19,7 @@ export class AcidenteDTO {
     detalhesFazerBO?: string;
     detalhesCPTRAN?: string;
     detalhesIML?: string;
-    detalhesAcordo?: string;
+    detalhesAcordo?: boolean;
     detalhesAcordoNumero?: string;
     climaTipo?: string;
     sinalizacao?: string;

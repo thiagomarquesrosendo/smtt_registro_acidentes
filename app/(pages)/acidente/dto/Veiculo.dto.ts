@@ -5,14 +5,12 @@ export class VeiculoDTO {
     placa?: string;
     nomeCondutor?: string;
     numeroOcupantes?: string;
-    possuiVitimas?: string;
-
-    vitimas?: VitimaDTO[];
-    
-    removido?: string;
+    removido?: boolean;
     removidoTipo?: string;
     removidoAuto?: string;
-    responsavel?: string;
+    responsavel?: boolean;
     responsavelNome?: string;
     responsavelCPF?: string;
+
+    vitimas?: VitimaDTO[];
 }

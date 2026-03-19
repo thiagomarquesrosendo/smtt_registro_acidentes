@@ -1,20 +1,32 @@
 'use client'
 
-export interface ChangeHandlerProps {
-    onChangeHandler: React.ChangeEventHandler<HTMLInputElement>;
+import { Dispatch, SetStateAction } from "react";
+import { AcidenteDTO } from "../dto/Acidente.dto";
+import { ClimaHook } from "../hooks/clima.hook";
+
+export interface ClimaProps {
+    form: AcidenteDTO;
+    setForm: (acidente: Dispatch<SetStateAction<AcidenteDTO>>) => void;
 }
 
-export default function Clima(props: ChangeHandlerProps) {
+export default function Clima(props: ClimaProps) {
+
+    const { form, setForm } = props;
+    const { handleChangeInput } = ClimaHook(form, setForm);
+
     return (
         <div>
             <label>
-                <input type="radio" name="climaTipo" value="Claro" onChange={props.onChangeHandler} />Claro
+                <input type="radio" name="climaTipo" value="Claro" 
+                    onChange={handleChangeInput} />Claro
             </label>
             <label>
-                <input type="radio" name="climaTipo" value="Chuvoso" onChange={props.onChangeHandler} />Chuvoso
+                <input type="radio" name="climaTipo" value="Chuvoso" 
+                    onChange={handleChangeInput} />Chuvoso
             </label>
             <label>
-                <input type="radio" name="climaTipo" value="Nublado" onChange={props.onChangeHandler} />Nublado
+                <input type="radio" name="climaTipo" value="Nublado" 
+                    onChange={handleChangeInput} />Nublado
             </label>
         </div>
     );

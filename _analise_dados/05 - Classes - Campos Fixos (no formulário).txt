@@ -1,0 +1,89 @@
+MODELO DE CLASSES
+
+Acidente
+	acidenteLogradouro: string
+	acidentePontoReferencia: string
+	acidenteBairro = string 
+		=> ListaBairros[] {
+			nomeBairro: string
+		}
+	acidenteHorario: string
+	agentesOcorrencia: string
+
+	XXXXXXXXXXX - acidenteQtdVeiculos: number
+	XXXXXXXXXXX - acidenteQtdPedestres: number
+
+	XXXXXXXXXXX - tipoAcidenteQtdTipos: number
+	tipoAcidente[] = ListaTipoAcidente[] {
+        tipoAcidente: string;
+        tipoAcidenteExpecifico: string;
+	}
+    tipoAcidenteObs: string
+
+	gravidade: ListaGravidade[] {
+		gravidadeDescricao: string
+	}
+	veiculos[] = Veiculos[] {
+		veiculoTipo: ListaTipoVeiculo[] {
+			nomeTipoVeiculo: string
+		}
+		veiculoPlaca: string
+		veiculoNomeCondutor: string
+		veiculoNumeroOcupantes: number
+		XXXXXXXXXXX - veiculoQtdVitimas: number
+		vitimas[] = Vitimas[] {
+			veiculoVitimaNome: string
+			veiculoVitimaCPF: string
+			veiculoVitimaTipo: ListaTipoVitima[] {
+				nomeTipoVitima: string
+			}
+			veiculoVitimaMedico: boolean
+			veiculoVitimaMedicoTipo: ListaTipoMedico[] {
+				nomeTipoMedico: string
+			}
+			veiculoVitimaHospital: boolean
+			veiculoVitimaHospitalNome: String
+		}
+		veiculoRemovido: boolean
+		veiculoRemovidoTipo: ListaTipoRemocao[] {
+			nomeTipoRemocao: string
+		}
+		veiculoRemovidoAuto: string
+		veiculoResponsavel: boolean
+		veiculoResponsavelNome: string
+		veiculoResponsavelCPF: string
+	}	
+	pedestres[] = Vitimas[] {
+		pedestreVitimaNome: string
+		pedestreVitimaCPF: string
+		pedestreVitimaTipo: ListaTipoVitima[] {
+			nomeTipoVitima: string
+		}
+		pedestreVitimaMedico: boolean
+		pedestreVitimaMedicoTipo: ListaTipoMedico[] {
+			nomeTipoMedico: string
+		}
+		pedestreVitimaHospital: boolean
+		pedestreVitimaHospitalNome: String
+	}
+	detalhesFazerBO: boolean
+	detalhesCPTRAN: boolean
+	detalhesIML: boolean
+	detalhesAcordo: boolean
+	detalhesAcordoNumero: String
+	climaTipo: ListaTipoClima[] {
+		nomeTipoClima: string
+	}
+	sinalizacaoTipo: ListaTipoSinalizacao[] {
+		nomeTipoSinalizacao: string
+	}
+	sinalizacaoTipoObs
+	iluminacaoTipo: ListaTipoIluminacao[] {
+		nomeTipoIluminacao: string
+	}
+	iluminacaoNoiteTipo: ListaTipoIluminacaoNoite[] {
+		nomeTipoIluminacaoNoite: string
+	}
+	pavimentoTipo: ListaTipoPavmentacao[] {
+		nomeTipoPavmentacao: string
+	}

@@ -1,124 +1,109 @@
 'use client'
 
-import { ChangeEvent } from "react";
 import { VeiculoDTO } from "../dto/Veiculo.dto";
-import { OcultarObjetosFormulario } from "../hooks/ocultar-objetos-formulario.hook";
 import VitimaVeiculo from "./vitima-veiculo.component";
+import { AcidenteDTO } from "../dto/Acidente.dto";
+import { VeiculoHook } from "../hooks/veiculo.hook";
+import { Dispatch, SetStateAction } from "react";
+import { mascaraTextoCPF, mascaraTextoPlacaVeicular } from "../hooks/mascara-texto.hook";
+import Subtitulo from "@/app/components/design/subtitulo.component";
 
-export interface ChangeHandlerProps {
-    // onChangeHandler: React.ChangeEventHandler<HTMLInputElement>;
-    onChangeHandler: (indexVeiculo: number, indexPedestre: number, indexVeiculoVitima: number, e: ChangeEvent<HTMLInputElement>) => void;
-    indexVeiculo: number;
-    veiculo: VeiculoDTO;
-    delVeiculo: (index: number) => void;
-    addVeiculoVitima: (index: number) => void;
-    delVeiculoVitima: (indexVeiculo: number, indexVitima: number) => void;
+export interface VeiculoProps {
+    form: AcidenteDTO;
+    setForm: (acidente: Dispatch<SetStateAction<AcidenteDTO>>) => void;
 }
 
-export default function Veiculo(props: ChangeHandlerProps) {
+export default function Veiculo(props: VeiculoProps) {
 
-    const { onChangeHandler, indexVeiculo, veiculo, delVeiculo, addVeiculoVitima, delVeiculoVitima } = props;
-    const { isVisible, toggleVisibility } = OcultarObjetosFormulario(11, 13);
+    const { form, setForm } = props;
+    const { handleChangeInput, handleChangeSelect, addVeiculo, delVeiculo } = VeiculoHook(form, setForm);
+    const { cpf, handleChangeInputCPF } = mascaraTextoCPF(form, setForm);
+    const { placa, handleChangeInputPlacaVeicular } = mascaraTextoPlacaVeicular(form, setForm);
 
     return (
-        <div className="lista">
-            <div className="titulo">
-                <h3>VEÍCULO - V{indexVeiculo + 1}</h3>
-                <button type="button" className="del"
-                    onClick={() => delVeiculo(indexVeiculo)}>Excluir</button>
-            </div>
-            <span>Tipo de Veículo:</span>
-            <div className="grupoRadio">
-                <label>
-                    <input type="radio" name="tipoVeiculo" value="Bicicleta" 
-                        onChange={(e) => onChangeHandler(indexVeiculo, -1, -1, e)} />Bicicleta
-                </label>
-                <label>
-                    <input type="radio" name="tipoVeiculo" value="Motocicleta" 
-                        onChange={(e) => onChangeHandler(indexVeiculo, -1, -1, e)} />Motocicleta
-                </label>
-                <label>
-                    <input type="radio" name="tipoVeiculo" value="Carro" 
-                        onChange={(e) => onChangeHandler(indexVeiculo, -1, -1, e)} />Carro
-                </label>
-                <label>
-                    <input type="radio" name="tipoVeiculo" value="Caminhão" 
-                        onChange={(e) => onChangeHandler(indexVeiculo, -1, -1, e)} />Caminhão
-                </label>
-                <label>
-                    <input type="radio" name="tipoVeiculo" value="Ônibus" 
-                        onChange={(e) => onChangeHandler(indexVeiculo, -1, -1, e)} />Ônibus
-                </label>
-            </div>
-
-
-            <input type="text" name="placa" value={veiculo.placa ?? ""} placeholder="Placa do veículo" 
-                onChange={(e) => onChangeHandler(indexVeiculo, -1, -1, e)} />
-            <input type="text" name="nomeCondutor" value={veiculo.nomeCondutor ?? ""} placeholder="Nome do condutor" 
-                onChange={(e) => onChangeHandler(indexVeiculo, -1, -1, e)} />
-            <input type="text" name="numeroOcupantes" value={veiculo.numeroOcupantes ?? ""} placeholder="Número de ocupantes" 
-                onChange={(e) => onChangeHandler(indexVeiculo, -1, -1, e)} />
-
-
-            <label>
-                <input type="checkbox" name="possuiVitimas" value="Possui vítimas"
-                    onChange={(e) => onChangeHandler(indexVeiculo, -1, -1, e)} 
-                    onClick={(e) => toggleVisibility(11, e)} />Possui vítimas:
-            </label>
-            <div style={{ display: isVisible[11] ? 'block' : 'none' }}>
-                {veiculo.vitimas!.map((vitima, indexVitima) => (
-                    <div key={indexVitima} className="grupoForm" style={{marginBottom:"10px"}}>
-                        <VitimaVeiculo 
-                            onChangeHandler={onChangeHandler} indexVeiculo={indexVeiculo} indexVeiculoVitima={indexVitima} vitima={vitima} 
-                            delVeiculoVitima={() => delVeiculoVitima(indexVeiculo, indexVitima)} />
+        <div className="itens">
+            {form.veiculos!.map((veiculo: VeiculoDTO, indexVeiculo: number) => (
+                <div key={indexVeiculo} className="lista">
+                    <div className="titulo">
+                        <h1>VEÍCULO - V{indexVeiculo + 1}</h1>
+                        <button type="button" className="del"
+                            onClick={() => delVeiculo(indexVeiculo)}>Excluir</button>
                     </div>
-                ))}
-                <button type="button" onClick={() => addVeiculoVitima(indexVeiculo)} className="add">+ Vítima</button>
-            </div>
+
+                    <select name="tipoVeiculo" onChange={(e) => handleChangeSelect(indexVeiculo, e)} required>
+                        <option value="">Selecione o Tipo de Veículo</option>
+                        <option value="Bicicleta">Bicicleta</option>
+                        <option value="Motocicleta">Motocicleta</option>
+                        <option value="Carro">Carro</option>
+                        <option value="Caminhão">Caminhão</option>
+                        <option value="Ônibus">Ônibus</option>
+                    </select>
+
+                    {veiculo.tipoVeiculo !== "Bicicleta" ? (
+                        <input type="text" name="placa" value={placa} placeholder="Placa do veículo" maxLength={7}
+                            onChange={(e) => handleChangeInputPlacaVeicular(indexVeiculo, e)} />
+                    ) : (
+                        <></>
+                    )}
+                    <input type="text" name="nomeCondutor" value={veiculo.nomeCondutor ?? ""} placeholder="Nome do condutor" 
+                        onChange={(e) => handleChangeInput(indexVeiculo, e)} />
+                    <input type="number" name="numeroOcupantes" value={veiculo.numeroOcupantes ?? ""} placeholder="Número de ocupantes" 
+                        onChange={(e) => handleChangeInput(indexVeiculo, e)} />
+
+                    <label>
+                        <input type="checkbox" name="removido" value="Removido para o pátio" 
+                            onChange={(e) => handleChangeInput(indexVeiculo, e)} />Removido para o pátio:
+                    </label>
+                    { veiculo.removido ? (
+                        <div className="grupoVertical">
+                            <span>Tipificação de Auto de Infração:</span>
+                            <div className="horizontal_2">
+                                <label>
+                                    <input type="radio" name="removidoTipo" value="Licenciamento Atrasado" 
+                                        onChange={(e) => handleChangeInput(indexVeiculo, e)} />Licenciamento Atrasado
+                                </label>
+                                <label>
+                                    <input type="radio" name="removidoTipo" value="Estacionamnto irregular" 
+                                        onChange={(e) => handleChangeInput(indexVeiculo, e)} />Estacionamnto irregular
+                                </label>
+                                <label>
+                                    <input type="radio" name="removidoTipo" value="Falta de equipamento obrigatório" 
+                                        onChange={(e) => handleChangeInput(indexVeiculo, e)} />Falta de equipamento obrigatório
+                                </label>
+                            </div>
+                            
+                            <div className="horizontal_2">
+                                <input type="text" name="removidoAuto" placeholder="Número do Auto de Infração" 
+                                    onChange={(e) => handleChangeInput(indexVeiculo, e)} />
+                            </div>
+                        </div>
+                    ) : (
+                        <></>
+                    ) }
 
 
-            <label>
-                <input type="checkbox" name="removido" value="Removido para o pátio" 
-                    onChange={(e) => onChangeHandler(indexVeiculo, -1, -1, e)}
-                    onClick={(e) => toggleVisibility(12, e)} />Removido para o pátio:
-            </label>
-            <div className="grupoForm" style={{ display: isVisible[12] ? 'block' : 'none' }}>
-                <span>Tipificação de Auto de Infração:</span>
-                <div>
-                    <div className="grupoRadio">
-                        <label>
-                            <input type="radio" name="removidoTipo" value="Licenciamento Atrasado" 
-                                onChange={(e) => onChangeHandler(indexVeiculo, -1, -1, e)} />Licenciamento Atrasado
-                        </label>
-                        <label>
-                            <input type="radio" name="removidoTipo" value="Estacionamnto irregular" 
-                                onChange={(e) => onChangeHandler(indexVeiculo, -1, -1, e)} />Estacionamnto irregular
-                        </label>
-                        <label>
-                            <input type="radio" name="removidoTipo" value="Falta de equipamento obrigatório" 
-                                onChange={(e) => onChangeHandler(indexVeiculo, -1, -1, e)} />Falta de equipamento obrigatório
-                        </label>
-                    </div>
-                    
-                    <div className="grupoInput">
-                        <input type="text" name="removidoAuto" placeholder="Número do Auto de Infração" 
-                            onChange={(e) => onChangeHandler(indexVeiculo, -1, -1, e)} />
-                    </div>
+                    <label>
+                        <input type="checkbox" name="responsavel" value="Apresentação de responsável pelo veículo" 
+                            onChange={(e) => handleChangeInput(indexVeiculo, e)} />Apresentação de responsável pelo veículo:
+                    </label>
+                    { veiculo.responsavel ? (
+                        <div className="grupoVertical">
+                            <input type="text" name="responsavelNome" placeholder="Nome do Responsável" 
+                                onChange={(e) => handleChangeInput(indexVeiculo, e)} />
+                            <input type="text" name="responsavelCPF" value={cpf} placeholder="CPF" maxLength={14}
+                                onChange={(e) => handleChangeInputCPF(indexVeiculo, -1, e)} />
+                        </div>
+                    ) : (
+                        <></>
+                    ) }
+
+                    <Subtitulo text="DADOS DAS VÍTIMAS" />
+                    <VitimaVeiculo form={form} setForm={setForm}
+                        indexVeiculo={indexVeiculo} veiculo={veiculo}  />
                 </div>
-            </div>
-
-
-            <label>
-                <input type="checkbox" name="responsavel" value="Apresentação de responsável pelo veículo" 
-                    onChange={(e) => onChangeHandler(indexVeiculo, -1, -1, e)}
-                    onClick={(e) => toggleVisibility(13, e)}  />Apresentação de responsável pelo veículo:
-            </label>
-            <div className="grupoForm" style={{ display: isVisible[13] ? 'block' : 'none' }}>
-                <input type="text" name="responsavelNome" placeholder="Nome do Responsável" 
-                    onChange={(e) => onChangeHandler(indexVeiculo, -1, -1, e)} />
-                <input type="text" name="responsavelCPF" placeholder="CPF" 
-                    onChange={(e) => onChangeHandler(indexVeiculo, -1, -1, e)} />
-            </div>
+            ))}
+            <button type="button" className="add" 
+                onClick={() => addVeiculo()}>+ Veiculo</button>
         </div>
     );
 }

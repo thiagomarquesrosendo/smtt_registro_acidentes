@@ -1,0 +1,51 @@
+acidenteLogradouro
+acidentePontoReferencia
+acidenteBairro
+acidenteHorario
+agentesOcorrencia
+XXXXXXXXXXX - acidenteQtdVeiculos
+XXXXXXXXXXX - acidenteQtdPedestres
+XXXXXXXXXXX - tipoAcidenteQtdTipos
+tipoAcidente
+colisaoTipo
+abalroamentoTipo
+atropelamentoTipo
+choqueTipo
+acidenteObs
+gravidadeTipo
+veiculoTipo
+veiculoPlaca
+veiculoNomeCondutor
+veiculoNumeroOcupantes
+XXXXXXXXXXX - veiculoQtdVitimas
+veiculoVitimaNome
+veiculoVitimaCPF
+veiculoVitimaTipo
+veiculoVitimaMedico
+veiculoVitimaMedicoTipo
+veiculoVitimaHospital
+veiculoVitimaHospitalNome
+veiculoRemovido
+veiculoRemovidoTipo
+veiculoRemovidoAuto
+veiculoResponsavel
+veiculoResponsavelNome
+veiculoResponsavelCPF
+pedestreVitimaNome
+pedestreVitimaCPF
+pedestreVitimaTipo
+pedestreVitimaMedico
+pedestreVitimaMedicoTipo
+pedestreVitimaHospital
+pedestreVitimaHospitalNome
+detalhesFazerBO
+detalhesCPTRAN
+detalhesIML
+detalhesAcordo
+detalhesAcordoNumero
+climaTipo
+sinalizacaoTipo
+sinalizacaoTipoObs
+iluminacaoTipo
+iluminacaoNoiteTipo
+pavimentoTipo

@@ -5,6 +5,7 @@ import Titulo from "@/app/components/design/titulo.component";
 import FormularioAcidente from "./components/formulario-acidente.component";
 
 export default function Home() {
+
     return (
         <Pagina>
             <Titulo text="REGISTRO DE ACIDENTES DE TRÂNSITO" />

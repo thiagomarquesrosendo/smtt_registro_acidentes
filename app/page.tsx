@@ -5,8 +5,6 @@ import Pagina from "./components/layout/pagina.component";
 export default function Home() {
 
   return (
-    <Pagina>
-      <BoasVindas />
-    </Pagina>
+    <Pagina />
   );
 }

@@ -1,3 +1,6 @@
+
+
+
 h1 {
     font-size: 16px;
     text-align: center;
@@ -250,7 +253,7 @@ input[type="time"]:focus {
     ======= LOGIN ========
 */
 .login {
-    background-color: rgb(0, 0, 0);
+    background-color: black;
     position: absolute;
     height: 100%;
     width: 100%;
@@ -293,19 +296,55 @@ input[type="time"]:focus {
     margin: auto;
 }
 
+
+
 .login .fundo .conteudo input {
     background-color: rgb(85, 63, 8);
     border: solid 2px rgb(85, 63, 8);
+    color: white;
     width: 100%;
     margin: auto;
     margin: 10px 0px;
-    color: white;
+    box-shadow: 0 0 0px 1000px rgb(85, 63, 8) inset;
+    -webkit-text-fill-color: white;
 }
 
-.login .fundo .conteudo input:focus {
-    border: solid 2px rgb(75, 53, 0);
+.login .fundo .conteudo input:active,
+.login .fundo .conteudo input:focus,
+.login .fundo .conteudo input:active,
+.login .fundo .conteudo input:invalid,
+.login .fundo .conteudo input:valid,
+.login .fundo .conteudo input:disabled {
+    outline: solid 2px black;
+    transition: border-color 0.3s;
+}
+
+.login .fundo .conteudo input::placeholder { /* Modern browsers (Chrome, Firefox, Opera, Safari 10.1+) */
+  color: rgb(255, 255, 255);
+  opacity: 0.4;
+}
+
+/* .login .fundo .conteudo input:disabled {
+    background-color: rgb(85, 63, 8);
+    border: solid 2px rgb(85, 63, 8);
     outline: solid 1px black;
     transition: border-color 0.3s;
+
+    box-shadow: 0 0 0px 1000px rgb(65, 43, 0) inset;
+
+    -webkit-box-shadow: 0 0 0px 1000px rgb(65, 43, 0) inset;
+    -webkit-text-fill-color: white;
+} */
+
+
+.login .fundo .conteudo .erro {
+    background-color: rgb(129, 0, 0);
+    color: white;
+    width: 100%;
+    padding: 5px;
+    margin: auto;
+    text-align: center;
+    border-radius: 20px;
 }
 
 .login .fundo button.entrar {

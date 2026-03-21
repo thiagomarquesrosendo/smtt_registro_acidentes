@@ -20,7 +20,7 @@ export function LogoutButtonHook() {
         router.refresh()
       }
     } catch (error) {
-      console.error("Logout error:", error)
+      console.error("Erro de saída do sistema:", error)
     } finally {
       setIsLoading(false)
     }

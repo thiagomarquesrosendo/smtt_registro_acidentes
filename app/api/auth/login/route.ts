@@ -11,19 +11,19 @@ export async function POST(request: NextRequest) {
     // Validate input
     const validation = validateLogin({ email, password })
     if (!validation.isValid) {
-      return NextResponse.json({ error: "Validation failed", details: validation.errors }, { status: 400 })
+      return NextResponse.json({ error: "Falha na validação", details: validation.errors }, { status: 400 })
     }
 
     // Find user
     const user = await getUserByEmail(email.toLowerCase().trim())
     if (!user) {
-      return NextResponse.json({ error: "Invalid email or password" }, { status: 401 })
+      return NextResponse.json({ error: "Email ou senha inválida" }, { status: 401 })
     }
 
     // Verify password
     const isValidPassword = await verifyPassword(password, user.password)
     if (!isValidPassword) {
-      return NextResponse.json({ error: "Invalid email or password" }, { status: 401 })
+      return NextResponse.json({ error: "Email ou senha inválida" }, { status: 401 })
     }
 
     // Create session
@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(
       {
-        message: "Login successful",
+        message: "Acesso realizado",
         user: {
           id: user.id || user.id?.toString(),
           name: user.name,
@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
       { status: 200 },
     )
   } catch (error) {
-    console.error("Login error:", error)
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 })
+    console.error("Erro de login:", error)
+    return NextResponse.json({ error: "Erro interno do servidor" }, { status: 500 })
   }
 }

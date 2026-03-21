@@ -1,7 +1,24 @@
-body {
-  background-color: white;
+/* 1. Definir cores base (modo claro) */
+:root {
+  color-scheme: light dark; /* Navegador ajusta formulários/barras */
+  --bg-color: #ffffff;
+  --text-color: #000000;
 }
 
+/* 2. Definir cores para modo escuro */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+  }
+}
+
+/* 3. Aplicar as variáveis */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s; /* Transição suave */
+}
 
 /* ====== CABECALHO ======= */
 

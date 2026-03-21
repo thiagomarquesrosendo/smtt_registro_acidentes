@@ -33,7 +33,7 @@ export function FormularioLoginHook() {
         if (result.details) {
           setFieldErrors(result.details)
         } else {
-          setError(result.error || "An error occurred")
+          setError(result.error || "Ocorreu um erro")
         }
         return
       }
@@ -42,7 +42,7 @@ export function FormularioLoginHook() {
       router.push("/acidente")
       router.refresh()
     } catch (error) {
-      setError("Network error. Please try again.")
+      setError("Erro de rede. Tente novamente.")
     } finally {
       setIsLoading(false)
     }

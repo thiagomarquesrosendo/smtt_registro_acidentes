@@ -7,7 +7,7 @@ import { TipoDeAcidenteHook } from "../hooks/tipo-de-acidente.hook";
 
 export interface TipoDeAcidenteProps {
     form: AcidenteDTO;
-    setForm: (acidente: Dispatch<SetStateAction<AcidenteDTO>>) => void;
+    setForm: Dispatch<SetStateAction<AcidenteDTO>>;
 }
 
 export default function TipoDeAcidente(props: TipoDeAcidenteProps) {

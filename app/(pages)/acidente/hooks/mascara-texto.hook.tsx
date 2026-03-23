@@ -2,7 +2,7 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import { AcidenteDTO } from "../dto/Acidente.dto";
 
-export function mascaraTextoCPF(form: AcidenteDTO, setForm: (acidente: Dispatch<SetStateAction<AcidenteDTO>>) => void) {
+export function mascaraTextoCPF(form: AcidenteDTO, setForm: Dispatch<SetStateAction<AcidenteDTO>>) {
     const [cpf, setCpf] = useState('');
 
     const maskCpf = (value: string) => {
@@ -38,7 +38,7 @@ export function mascaraTextoCPF(form: AcidenteDTO, setForm: (acidente: Dispatch<
     return {cpf, handleChangeInputCPF};
 }
 
-export function mascaraTextoPlacaVeicular(form: AcidenteDTO, setForm: (acidente: Dispatch<SetStateAction<AcidenteDTO>>) => void) {
+export function mascaraTextoPlacaVeicular(form: AcidenteDTO, setForm: Dispatch<SetStateAction<AcidenteDTO>>) {
     const [placa, setPlaca] = useState('');
 
     const maskPlaca = (value: string) => {

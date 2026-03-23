@@ -6,7 +6,7 @@ import { IluminacaoHook } from "../hooks/iluminacao.hook";
 
 export interface IluminacaoProps {
     form: AcidenteDTO;
-    setForm: (acidente: Dispatch<SetStateAction<AcidenteDTO>>) => void;
+    setForm: Dispatch<SetStateAction<AcidenteDTO>>;
 }
 
 export default function Iluminacao(props: IluminacaoProps) {

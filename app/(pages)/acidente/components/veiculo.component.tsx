@@ -10,7 +10,7 @@ import Subtitulo from "@/app/components/design/subtitulo.component";
 
 export interface VeiculoProps {
     form: AcidenteDTO;
-    setForm: (acidente: Dispatch<SetStateAction<AcidenteDTO>>) => void;
+    setForm: Dispatch<SetStateAction<AcidenteDTO>>;
 }
 
 export default function Veiculo(props: VeiculoProps) {

@@ -4,7 +4,7 @@ import { AcidenteDTO } from "../dto/Acidente.dto";
 import { listaTiposAcidentes } from "../constant/listaTiposAcidentes";
 import { Dispatch, SetStateAction } from "react";
 
-export function TipoDeAcidenteHook(form: AcidenteDTO, setForm: (acidente: Dispatch<SetStateAction<AcidenteDTO>>) => void) {
+export function TipoDeAcidenteHook(form: AcidenteDTO, setForm: Dispatch<SetStateAction<AcidenteDTO>>) {
 
     const [item, setItem] = useState<string>("");
     const [subItem, setSubItem] = useState<string>("");

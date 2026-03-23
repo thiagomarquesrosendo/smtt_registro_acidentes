@@ -3,7 +3,7 @@ import { ChangeEvent, useState } from "react";
 import { AcidenteDTO } from "../dto/Acidente.dto";
 import { Dispatch, SetStateAction } from "react";
 
-export function VeiculoHook(form: AcidenteDTO, setForm: (acidente: Dispatch<SetStateAction<AcidenteDTO>>) => void) {
+export function VeiculoHook(form: AcidenteDTO, setForm: Dispatch<SetStateAction<AcidenteDTO>>) {
 
     const handleChangeInput = (indexVeiculo: number, e: ChangeEvent<HTMLInputElement>) => {
         const { name, value, checked } = e.target;

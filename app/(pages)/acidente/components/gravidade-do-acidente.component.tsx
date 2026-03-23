@@ -6,7 +6,7 @@ import { GravidadeDoAcidenteHook } from "../hooks/gravidade-do-acidente.hook";
 
 export interface GravidadeDoAcidenteProps {
     form: AcidenteDTO;
-    setForm: (acidente: Dispatch<SetStateAction<AcidenteDTO>>) => void;
+    setForm: Dispatch<SetStateAction<AcidenteDTO>>;
 }
 
 export default function GravidadeDoAcidente(props: GravidadeDoAcidenteProps) {

@@ -6,7 +6,7 @@ import { MaisDetalhesDoAcidenteHook } from "../hooks/mais-detalhes-do-acidente..
 
 export interface MaisDetalhesDoAcidenteProps {
     form: AcidenteDTO;
-    setForm: (acidente: Dispatch<SetStateAction<AcidenteDTO>>) => void;
+    setForm: Dispatch<SetStateAction<AcidenteDTO>>;
 }
 
 export default function MaisDetalhesDoAcidente(props: MaisDetalhesDoAcidenteProps) {

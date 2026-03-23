@@ -1,7 +1,7 @@
 import "server-only"
-import { SignJWT, jwtVerify } from "jose"
+import { JWTPayload, SignJWT, jwtVerify } from "jose"
 import { cookies } from "next/headers"
-import bcrypt from "bcryptjs"
+// import bcrypt from "bcryptjs"
 
 const secretKey = process.env.JWT_SECRET || "your-secret-key-change-in-production"
 const encodedKey = new TextEncoder().encode(secretKey)

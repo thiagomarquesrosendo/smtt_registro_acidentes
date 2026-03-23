@@ -6,7 +6,7 @@ import { AgentesHook } from "../hooks/agentes.hook";
 
 export interface AgentesProps {
     form: AcidenteDTO;
-    setForm: (acidente: Dispatch<SetStateAction<AcidenteDTO>>) => void;
+    setForm: Dispatch<SetStateAction<AcidenteDTO>>;
 }
 
 export default function Agentes(props: AgentesProps) {

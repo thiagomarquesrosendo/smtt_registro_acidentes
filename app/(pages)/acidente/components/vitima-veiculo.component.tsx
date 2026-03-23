@@ -8,7 +8,7 @@ import { mascaraTextoCPF } from "../hooks/mascara-texto.hook";
 
 export interface VitimaVeiculoProps { 
     form: AcidenteDTO;
-    setForm: (acidente: Dispatch<SetStateAction<AcidenteDTO>>) => void;
+    setForm: Dispatch<SetStateAction<AcidenteDTO>>;
     indexVeiculo: number;
     veiculo: VeiculoDTO;
 }

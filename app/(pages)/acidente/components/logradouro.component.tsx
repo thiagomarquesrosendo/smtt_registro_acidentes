@@ -7,7 +7,7 @@ import { mascaraTextoCPF } from "../hooks/mascara-texto.hook";
 
 export interface LogradouroProps {
     form: AcidenteDTO;
-    setForm: (acidente: Dispatch<SetStateAction<AcidenteDTO>>) => void;
+    setForm: Dispatch<SetStateAction<AcidenteDTO>>;
 }
 
 export default function Logradouro(props: LogradouroProps) {

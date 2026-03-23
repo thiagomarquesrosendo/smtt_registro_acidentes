@@ -21,7 +21,7 @@ export function FormularioAcidenteHook() {
     detalhesFazerBO: "",
     detalhesCPTRAN: "",
     detalhesIML: "",
-    detalhesAcordo: "",
+    detalhesAcordo: false,
     detalhesAcordoNumero: "",
     climaTipo: "",
     sinalizacao: "",

@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from "react";
 import { AcidenteDTO } from "../dto/Acidente.dto"
 import { Dispatch, SetStateAction } from "react";
 
-export function VitimaVeiculoHook(form: AcidenteDTO, setForm: (acidente: Dispatch<SetStateAction<AcidenteDTO>>) => void) {
+export function VitimaVeiculoHook(form: AcidenteDTO, setForm: Dispatch<SetStateAction<AcidenteDTO>>) {
 
     const handleChangeInput = (indexVeiculo: number, indexVitima: number, e: ChangeEvent<HTMLInputElement>) => {
         const { name, value, checked } = e.target;

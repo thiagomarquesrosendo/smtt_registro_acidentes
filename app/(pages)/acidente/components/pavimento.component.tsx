@@ -6,7 +6,7 @@ import { PavimentoHook } from "../hooks/pavimento.hook";
 
 export interface PavimentoProps {
     form: AcidenteDTO;
-    setForm: (acidente: Dispatch<SetStateAction<AcidenteDTO>>) => void;
+    setForm: Dispatch<SetStateAction<AcidenteDTO>>;
 }
 
 export default function Pavimento(props: PavimentoProps) {

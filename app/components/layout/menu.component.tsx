@@ -17,7 +17,7 @@ export default async function Menu() {
                     <>
                         <span>{session.name}</span>
                             <div>Email {session.email}</div>
-                            <div>Logout: {new Date(session.expiresAt).toLocaleDateString()}</div>
+                            <div>Logout: {new Date(session.exp).toLocaleDateString()}</div>
                         <LogoutButton />
                     </>
                 ) : (

@@ -6,11 +6,31 @@ import { cookies } from "next/headers"
 const secretKey = process.env.JWT_SECRET || "your-secret-key-change-in-production"
 const encodedKey = new TextEncoder().encode(secretKey)
 
-export interface SessionPayload {
+// export interface SessionPayload {
+//   userId: string
+//   email: string
+//   name: string
+//   expiresAt: Date
+// }
+
+// export let SessionPayload: JWTPayload = {
+//   userId: 'abc-123',
+//   role: 'admin',
+//   email: "",
+//   name: 'João Silva',
+//   sub: '1234567890',  // Assunto - Identificador único do usuário ou recurso.
+
+//   iat: Number.parseInt("2026-04-10"),  // Tempo da criação (em segundos).
+//   exp: Number.parseInt("2026-04-10"),  // Tempo da expiração (em segundos). É importante para segurança.
+// }
+
+export interface SessionPayload extends JWTPayload {
   userId: string
+  role?: string
   email: string
   name: string
-  expiresAt: Date
+  iat?: number
+  exp: number
 }
 
 export async function encrypt(payload: SessionPayload) {
@@ -39,7 +59,7 @@ export async function createSession(user: { id: string; email: string; name: str
     userId: user.id,
     email: user.email,
     name: user.name,
-    expiresAt,
+    exp: Number.parseInt(expiresAt + ""),
   })
 
   const cookieStore = await cookies()

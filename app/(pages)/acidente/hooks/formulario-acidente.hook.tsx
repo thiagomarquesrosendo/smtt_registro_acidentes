@@ -4,8 +4,12 @@ import { AcidenteDTO } from "../dto/Acidente.dto";
 import { VitimaDTO } from "../dto/Vitima.dto";
 import { VeiculoDTO } from "../dto/Veiculo.dto";
 import { PedestreDTO } from "../dto/Pedestre.dto";
+import { getSession } from "@/lib/auth";
 
-export function FormularioAcidenteHook() {
+export async function FormularioAcidenteHook() {
+
+  const session = await getSession();
+
   const [form, setForm] = useState<AcidenteDTO>({
     logradouro: "",
     pontoReferencia: "",
@@ -18,9 +22,9 @@ export function FormularioAcidenteHook() {
     gravidade: "",
     veiculos: [],
     pedestres: [],
-    detalhesFazerBO: "",
-    detalhesCPTRAN: "",
-    detalhesIML: "",
+    detalhesFazerBO: false,
+    detalhesCPTRAN: false,
+    detalhesIML: false,
     detalhesAcordo: false,
     detalhesAcordoNumero: "",
     climaTipo: "",
@@ -34,9 +38,9 @@ export function FormularioAcidenteHook() {
 
   function registroDeAcidente(): string {
 
-    const message = `📋 REGISTRO DE ACIDENTES DE TRÂNSITO ✅
+    const message = `📋 *REGISTRO DE ACIDENTES DE TRÂNSITO* ✅
 
-----------------------------------------
+-------------------------------------------------------
 DADOS DO LOCAL DO ACIDENTE
 
   *Logradouro:* ${form.logradouro}
@@ -44,112 +48,115 @@ DADOS DO LOCAL DO ACIDENTE
   *Bairro:* ${form.bairro}
   *Horário:* ${form.horario}
 
-----------------------------------------
+-------------------------------------------------------
 AGENTES QUE ATENDERAM A OCORRÊNCIA
 
   *Nomes:* ${form.agentesOcorrencia}
 
-----------------------------------------
+-------------------------------------------------------
 TIPO DE ACIDENTE
 
   *Tipo de Acidente:* ${form.tipoAcidente} ${form.tipoAcidenteSubTipo}
   *Outras informações:* ${form.tipoAcidenteObs}
 
-----------------------------------------
+-------------------------------------------------------
 GRAVIDADE DO ACIDENTE
 
   ${form.gravidade}
 
 ${form.veiculos!.length > 0 ? (
-`----------------------------------------
+`-------------------------------------------------------
 DADOS DOS VEÍCULOS
-${form.veiculos!.map((veiculo: VeiculoDTO, indexVeiculo: number) => (`
-  ${indexVeiculo}) VEÍCULO
+${form.veiculos!.map((veiculo: VeiculoDTO, indexVeiculo: number) => (
+`  ${indexVeiculo + 1}) VEÍCULO
 
   Tipo de Veículo: ${veiculo.tipoVeiculo}
   Placa: ${veiculo.placa}
   Nome do Condutor: ${veiculo.nomeCondutor}
-  Número de Ocupantes: ${veiculo.numeroOcupantes}
-  
-  VÍTIMAS
+  Número de Ocupantes: ${veiculo.numeroOcupantes} pessoa(s)
+  ${veiculo.removido ? (
+`  Removido para o pátio:
+    - Tipificação do AIT: ${veiculo.removidoTipo}
+    - Número do AIT: ${veiculo.removidoAuto}`) : (`<></>`)}
+    ${veiculo.responsavel ? (
+`  Responsável pelo veículo:
+    - Nome: ${veiculo.responsavelNome}
+    - CPF: ${veiculo.responsavelCPF}`) : (`<></>`)}
 
-  ${veiculo.vitimas!.map((vitima: VitimaDTO, indexVitima: number) => (`
-    ${indexVitima}) VÍTIMA
+    VÍTIMAS
+  
+    - Número de vítimas: ${veiculo.vitimas?.length} vítima(s)
+    ${veiculo.vitimas!.map((vitima: VitimaDTO, indexVitima: number) => (
+`    ${indexVitima + 1}) VÍTIMA
 
     Nome da Vitima: ${vitima.nomeVitima}
     CPF: ${vitima.cpfVitima}
     Tipo de vítima: ${vitima.tipoVitima}
-    Atendimento Médico: ${vitima.medicoVitima}
-    Tipo de Atendimento: ${vitima.medicoTipoVitima}
-    Conduzido para o Hospital: ${vitima.hospitalVitima}
-    Nome do Hospital: ${vitima.hospitalNomeVitima}
-  `))}
+    ${vitima.medicoVitima ? (`
+    Atendimento Médico:
+      - Tipo de Atendimento: ${vitima.medicoTipoVitima}
+      - Conduzido para o Hospital: ${vitima.hospitalVitima}
+      - Nome do Hospital: ${vitima.hospitalNomeVitima}`) : (`<></>`)}
+    `))}
 
-  Removido para o pátio: ${veiculo.removido}
-  Tipificação de Auto de Infração: ${veiculo.removidoTipo}
-  Número do Auto de Infração: ${veiculo.removidoAuto}
-  Apresentação de responsável pelo veículo: ${veiculo.responsavel}
-  Nome: ${veiculo.responsavelNome}
-  CPF: ${veiculo.responsavelCPF}
-
-`))}
-`) : (
+`))}`) : (
     `*NENHUM VEÍCULO CADASTRADO*`
 )}
 
 ${form.pedestres!.length > 0 ? (
-`----------------------------------------
+`-------------------------------------------------------
 DADOS DOS PEDESTRES
 ${form.pedestres!.map((pedestre: PedestreDTO, indexPedestre: number) => (`
-  ${indexPedestre}) VÍTIMA
+  ${indexPedestre + 1}) VÍTIMA
 
   Nome da Vitima: ${pedestre.nomePedestre}
   CPF: ${pedestre.cpfPedestre}
   Tipo de vítima: ${pedestre.tipoPedestre}
-  Atendimento Médico: ${pedestre.medicoPedestre}
-  Tipo de Atendimento: ${pedestre.medicoTipoPedestre}
-  Conduzido para o Hospital: ${pedestre.hospitalPedestre}
-  Nome do Hospital: ${pedestre.hospitalNomePedestre}
 
+${pedestre.medicoPedestre ? (`
+  Atendimento Médico:
+    - Tipo de Atendimento: ${pedestre.medicoTipoPedestre}
+    - Conduzido para o Hospital: ${pedestre.hospitalPedestre}
+    - Nome do Hospital: ${pedestre.hospitalNomePedestre}
+`) : (`<></>`)}
 `))}
 `) : (
     `*NENHUM PEDESTRE CADASTRADO*`
 )}
 
-----------------------------------------
+-------------------------------------------------------
 MAIS DETALHES DO ACIDENTE
 
-${form.detalhesFazerBO ? (`  ` + form.detalhesFazerBO + `
-`) : ""}${form.detalhesCPTRAN ? (`  ` + form.detalhesCPTRAN + `
-`) : ""}${form.detalhesIML ? (`  ` + form.detalhesIML + `
-`) : ""}${form.detalhesAcordo ? (`  ` + form.detalhesAcordo + `
-       - ` + form.detalhesAcordoNumero) : ""}
-----------------------------------------
+${form.detalhesFazerBO ? (`  Orientados a fazer Boletim de Ocorrência
+`) : ""}${form.detalhesCPTRAN ? (`  CPTRAN esteve no local
+`) : ""}${form.detalhesIML ? (`  IML esteve presente no local
+`) : ""}${form.detalhesAcordo ? (`  Acordo formal pré-processual:
+       - Nº: ` + form.detalhesAcordoNumero) : ""}
+-------------------------------------------------------
 CLIMA
 
   ${form.climaTipo}
   
-----------------------------------------
+-------------------------------------------------------
 SINALIZAÇÃO
 
   ${form.sinalizacao}
-  ${form.sinalizacaoObs}
+  *Observações:* ${form.sinalizacaoObs}
   
-----------------------------------------
+-------------------------------------------------------
 ILUMINAÇÃO
 
-  ${form.iluminacao}
-  *Noite:* ${form.iluminacaoNoite}
+  ${form.iluminacao} ${form.iluminacaoNoite}
   
-----------------------------------------
+-------------------------------------------------------
 PAVIMENTO
 
   ${form.pavimento}
 
 
-  =======================================
-      Registrado por: Alguém
-  =======================================`;
+  ==============================
+      Registrado por: ${session!.name}
+  ==============================`;
 
     return message;
   }
@@ -160,7 +167,7 @@ PAVIMENTO
     e.preventDefault();
     console.log('Dados enviados:', form);
 
-    const phone = "5579988778915"; // coloque seu número aqui
+    const phone = "5579988914200"; // coloque seu número aqui
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(registroDeAcidente())}`;
 
     window.open(url, "_blank");

@@ -7,7 +7,13 @@ export function MaisDetalhesDoAcidenteHook(form: AcidenteDTO, setForm: Dispatch<
     const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value, checked } = e.target;
 
-        if (name === "detalhesAcordo") {
+        if (name === "detalhesFazerBO") {
+            form.detalhesFazerBO = checked;
+        } else if (name === "detalhesCPTRAN") {
+            form.detalhesCPTRAN = checked;
+        } else if (name === "detalhesIML") {
+            form.detalhesIML = checked;
+        } else if (name === "detalhesAcordo") {
             form.detalhesAcordo = checked;
         }
 

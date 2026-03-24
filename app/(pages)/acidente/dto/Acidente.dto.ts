@@ -16,9 +16,9 @@ export class AcidenteDTO {
     veiculos?: VeiculoDTO[];
     pedestres?: PedestreDTO[];
 
-    detalhesFazerBO?: string;
-    detalhesCPTRAN?: string;
-    detalhesIML?: string;
+    detalhesFazerBO?: boolean;
+    detalhesCPTRAN?: boolean;
+    detalhesIML?: boolean;
     detalhesAcordo?: boolean;
     detalhesAcordoNumero?: string;
     climaTipo?: string;

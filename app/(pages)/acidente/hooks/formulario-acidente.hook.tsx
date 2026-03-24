@@ -1,14 +1,11 @@
- import { ChangeEvent, useState } from "react";
+ import { useState } from "react";
 import { EnviarFotos } from "./enviar-fotos.hook";
 import { AcidenteDTO } from "../dto/Acidente.dto";
 import { VitimaDTO } from "../dto/Vitima.dto";
 import { VeiculoDTO } from "../dto/Veiculo.dto";
 import { PedestreDTO } from "../dto/Pedestre.dto";
-import { getSession } from "@/lib/auth";
 
-export async function FormularioAcidenteHook() {
-
-  const session = await getSession();
+export function FormularioAcidenteHook() {
 
   const [form, setForm] = useState<AcidenteDTO>({
     logradouro: "",
@@ -151,12 +148,7 @@ ILUMINAÇÃO
 -------------------------------------------------------
 PAVIMENTO
 
-  ${form.pavimento}
-
-
-  ==============================
-      Registrado por: ${session!.name}
-  ==============================`;
+  ${form.pavimento}`;
 
     return message;
   }

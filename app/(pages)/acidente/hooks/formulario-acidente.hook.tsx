@@ -38,7 +38,7 @@ export function FormularioAcidenteHook() {
     const message = `📋 *REGISTRO DE ACIDENTES DE TRÂNSITO* ✅
 
 -------------------------------------------------------
-DADOS DO LOCAL DO ACIDENTE
+🧭 *DADOS DO LOCAL DO ACIDENTE*
 
   *Logradouro:* ${form.logradouro}
   *Ponto de Referência:* ${form.pontoReferencia}
@@ -46,26 +46,22 @@ DADOS DO LOCAL DO ACIDENTE
   *Horário:* ${form.horario}
 
 -------------------------------------------------------
-AGENTES QUE ATENDERAM A OCORRÊNCIA
+👨‍✈️ *AGENTES QUE ATENDERAM A OCORRÊNCIA*
 
   *Nomes:* ${form.agentesOcorrencia}
 
 -------------------------------------------------------
-TIPO DE ACIDENTE
+📵 *TIPO DE ACIDENTE*
 
   *Tipo de Acidente:* ${form.tipoAcidente} ${form.tipoAcidenteSubTipo}
+  *Gravidade:* ${form.gravidade}
   *Outras informações:* ${form.tipoAcidenteObs}
-
--------------------------------------------------------
-GRAVIDADE DO ACIDENTE
-
-  ${form.gravidade}
 
 ${form.veiculos!.length > 0 ? (
 `-------------------------------------------------------
-DADOS DOS VEÍCULOS
+🚔 *DADOS DOS VEÍCULOS*
 ${form.veiculos!.map((veiculo: VeiculoDTO, indexVeiculo: number) => (
-`  ${indexVeiculo + 1}) VEÍCULO
+`  ${indexVeiculo + 1}) VEÍCULO 🚗🚴‍♀️🚛🏍️
 
   Tipo de Veículo: ${veiculo.tipoVeiculo}
   Placa: ${veiculo.placa}
@@ -74,11 +70,11 @@ ${form.veiculos!.map((veiculo: VeiculoDTO, indexVeiculo: number) => (
   ${veiculo.removido ? (
 `  Removido para o pátio:
     - Tipificação do AIT: ${veiculo.removidoTipo}
-    - Número do AIT: ${veiculo.removidoAuto}`) : (`<></>`)}
+    - Número do AIT: ${veiculo.removidoAuto}`) : (``)}
     ${veiculo.responsavel ? (
 `  Responsável pelo veículo:
     - Nome: ${veiculo.responsavelNome}
-    - CPF: ${veiculo.responsavelCPF}`) : (`<></>`)}
+    - CPF: ${veiculo.responsavelCPF}`) : (``)}
 
     VÍTIMAS
   
@@ -93,16 +89,14 @@ ${form.veiculos!.map((veiculo: VeiculoDTO, indexVeiculo: number) => (
     Atendimento Médico:
       - Tipo de Atendimento: ${vitima.medicoTipoVitima}
       - Conduzido para o Hospital: ${vitima.hospitalVitima}
-      - Nome do Hospital: ${vitima.hospitalNomeVitima}`) : (`<></>`)}
+      - Nome do Hospital: ${vitima.hospitalNomeVitima}`) : (``)}
     `))}
 
-`))}`) : (
-    `*NENHUM VEÍCULO CADASTRADO*`
-)}
+`))}`) : (``)}
 
 ${form.pedestres!.length > 0 ? (
 `-------------------------------------------------------
-DADOS DOS PEDESTRES
+🚶‍♂️ *DADOS DOS PEDESTRES*
 ${form.pedestres!.map((pedestre: PedestreDTO, indexPedestre: number) => (`
   ${indexPedestre + 1}) VÍTIMA
 
@@ -115,40 +109,24 @@ ${pedestre.medicoPedestre ? (`
     - Tipo de Atendimento: ${pedestre.medicoTipoPedestre}
     - Conduzido para o Hospital: ${pedestre.hospitalPedestre}
     - Nome do Hospital: ${pedestre.hospitalNomePedestre}
-`) : (`<></>`)}
+`) : (``)}
 `))}
-`) : (
-    `*NENHUM PEDESTRE CADASTRADO*`
-)}
+`) : (``)}
 
 -------------------------------------------------------
-MAIS DETALHES DO ACIDENTE
+📝 *MAIS DETALHES DO ACIDENTE*
 
-${form.detalhesFazerBO ? (`  Orientados a fazer Boletim de Ocorrência
-`) : ""}${form.detalhesCPTRAN ? (`  CPTRAN esteve no local
-`) : ""}${form.detalhesIML ? (`  IML esteve presente no local
-`) : ""}${form.detalhesAcordo ? (`  Acordo formal pré-processual:
-       - Nº: ` + form.detalhesAcordoNumero) : ""}
--------------------------------------------------------
-CLIMA
+${form.detalhesFazerBO ? (`  *Orientados a fazer Boletim de Ocorrência.*
+`) : ""}${form.detalhesCPTRAN ? (`  *CPTRAN esteve no local.*
+`) : ""}${form.detalhesIML ? (`  *IML esteve presente no local.*
+`) : ""}${form.detalhesAcordo ? (`  *Acordo formal pré-processual:*
+     - Nº Acordo: ` + form.detalhesAcordoNumero) : ""}
 
-  ${form.climaTipo}
-  
--------------------------------------------------------
-SINALIZAÇÃO
-
-  ${form.sinalizacao}
-  *Observações:* ${form.sinalizacaoObs}
-  
--------------------------------------------------------
-ILUMINAÇÃO
-
-  ${form.iluminacao} ${form.iluminacaoNoite}
-  
--------------------------------------------------------
-PAVIMENTO
-
-  ${form.pavimento}`;
+  *Clima:* ${form.climaTipo}
+  *Sinalização:* ${form.sinalizacao}
+    - Observações: ${form.sinalizacaoObs}
+  *Iluminação:* ${form.iluminacao} ${form.iluminacaoNoite}
+  *Pavimento:* ${form.pavimento}`;
 
     return message;
   }

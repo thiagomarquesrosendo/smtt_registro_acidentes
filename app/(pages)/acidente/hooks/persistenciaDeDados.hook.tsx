@@ -5,20 +5,18 @@ export function PersistenciaDeDadosHook(form: AcidenteDTO, setForm: Dispatch<Set
 
     const [contador, setContador] = useState<number>(0);
 
-    // useEffect(() => {
-    //     receberDados();
-    //     // Define o intervalo para rodar
-    //     // Exemplo: 1000 -> 1 segundo (1000ms)
-    //     const intervalId = setInterval(() => {
-    //         setContador((prev) => prev + 1);
-    //         salvarDados();
-    //         alert("Salvou");
-    //         // alert(JSON.stringify(form))
-    // }, 20000);  // 2 minutos
+    useEffect(() => {
+        receberDados();
+        
+        const intervalId = setInterval(() => { // Define o intervalo para rodar. Exemplo: 1000 -> 1 segundo (1000ms)
+            setContador((prev) => prev + 1);
+            salvarDados();
+            // alert(JSON.stringify(form))
+        }, 180000);  // 3 minutos
 
-    //     // Função de limpeza: para o timer quando o componente é desmontado
-    //     return () => clearInterval(intervalId);
-    // }, []); // Array vazio garante que o efeito rode apenas na montagem
+        // Função de limpeza: para o timer quando o componente é desmontado
+        return () => clearInterval(intervalId);
+    }, []); // Array vazio garante que o efeito rode apenas na montagem
 
     function receberDados() {
         form.logradouro = localStorage.getItem('logradouro') ?? "";
@@ -34,40 +32,40 @@ export function PersistenciaDeDadosHook(form: AcidenteDTO, setForm: Dispatch<Set
         let qtdVeiculos = Number.parseInt(localStorage.getItem('qtdVeiculos') ?? "0");
         for (let index = 0; index < qtdVeiculos; index++) {
             addVeiculo();
-            form.veiculos![index].tipoVeiculo! = localStorage.getItem('tipoVeiculo'+index) ?? "";
-            form.veiculos![index].placa! = localStorage.getItem('placa'+index) ?? "";
-            form.veiculos![index].nomeCondutor! = localStorage.getItem('nomeCondutor'+index) ?? "";
-            form.veiculos![index].numeroOcupantes! = localStorage.getItem('numeroOcupantes'+index) ?? "";
-            form.veiculos![index].removido! = localStorage.getItem('removido'+index) === "true" ? true : false;
-            form.veiculos![index].removidoTipo! = localStorage.getItem('removidoTipo'+index) ?? "";
-            form.veiculos![index].removidoAuto! = localStorage.getItem('removidoAuto'+index) ?? "";
-            form.veiculos![index].responsavel! = localStorage.getItem('responsavel'+index) === "true" ? true : false;
-            form.veiculos![index].responsavelNome! = localStorage.getItem('responsavelNome'+index) ?? "";
-            form.veiculos![index].responsavelCPF! = localStorage.getItem('responsavelCPF'+index) ?? "";
+            form.veiculos![index].tipoVeiculo = localStorage.getItem('tipoVeiculo'+index) ?? "";
+            form.veiculos![index].placa = localStorage.getItem('placa'+index) ?? "";
+            form.veiculos![index].nomeCondutor = localStorage.getItem('nomeCondutor'+index) ?? "";
+            form.veiculos![index].numeroOcupantes = localStorage.getItem('numeroOcupantes'+index) ?? "";
+            form.veiculos![index].removido = localStorage.getItem('removido'+index) === "true" ? true : false;
+            form.veiculos![index].removidoTipo = localStorage.getItem('removidoTipo'+index) ?? "";
+            form.veiculos![index].removidoAuto = localStorage.getItem('removidoAuto'+index) ?? "";
+            form.veiculos![index].responsavel = localStorage.getItem('responsavel'+index) === "true" ? true : false;
+            form.veiculos![index].responsavelNome = localStorage.getItem('responsavelNome'+index) ?? "";
+            form.veiculos![index].responsavelCPF = localStorage.getItem('responsavelCPF'+index) ?? "";
 
             let qtdVitimas = Number.parseInt(localStorage.getItem('qtdVitimas'+index) ?? "0");
             for (let index2 = 0; index2 < qtdVitimas; index2++) {
                 addVeiculoVitima(index);
-                form.veiculos![index].vitimas![index2].nomeVitima! = localStorage.getnomeVitima('cpfVitima'+index2) ?? "";
-                form.veiculos![index].vitimas![index2].cpfVitima! = localStorage.getItem('cpfVitima'+index2) ?? "";
-                form.veiculos![index].vitimas![index2].tipoVitima! = localStorage.getItem('tipoVitima'+index2) ?? "";
-                form.veiculos![index].vitimas![index2].medicoVitima! = localStorage.getItem('medicoVitima'+index2) === "true" ? true : false;
-                form.veiculos![index].vitimas![index2].medicoTipoVitima! = localStorage.getItem('medicoTipoVitima'+index2) ?? "";
-                form.veiculos![index].vitimas![index2].hospitalVitima! = localStorage.getItem('hospitalVitima'+index2) === "true" ? true : false;
-                form.veiculos![index].vitimas![index2].hospitalNomeVitima! = localStorage.getItem('hospitalNomeVitima'+index2) ?? "";
+                form.veiculos![index].vitimas![index2].nomeVitima = localStorage.getItem('nomeVitima'+index+'&'+index2) ?? "";
+                form.veiculos![index].vitimas![index2].cpfVitima = localStorage.getItem('cpfVitima'+index+'&'+index2) ?? "";
+                form.veiculos![index].vitimas![index2].tipoVitima = localStorage.getItem('tipoVitima'+index+'&'+index2) ?? "";
+                form.veiculos![index].vitimas![index2].medicoVitima = localStorage.getItem('medicoVitima'+index+'&'+index2) === "true" ? true : false;
+                form.veiculos![index].vitimas![index2].medicoTipoVitima = localStorage.getItem('medicoTipoVitima'+index+'&'+index2) ?? "";
+                form.veiculos![index].vitimas![index2].hospitalVitima = localStorage.getItem('hospitalVitima'+index+'&'+index2) === "true" ? true : false;
+                form.veiculos![index].vitimas![index2].hospitalNomeVitima = localStorage.getItem('hospitalNomeVitima'+index+'&'+index2) ?? "";
             }               
         }
 
         let qtdPedestres = Number.parseInt(localStorage.getItem('qtdPedestres') ?? "0");
         for (let index = 0; index < qtdPedestres; index++) {
             addPedestre();
-            form.pedestres![index].nomePedestre! = localStorage.getItem('nomePedestre'+index) ?? ""; 
-            form.pedestres![index].cpfPedestre! = localStorage.getItem('cpfPedestre'+index) ?? ""; 
-            form.pedestres![index].tipoPedestre! = localStorage.getItem('tipoPedestre'+index) ?? ""; 
-            form.pedestres![index].medicoPedestre! = localStorage.getItem('medicoPedestre'+index) === "true" ? true : false;
-            form.pedestres![index].medicoTipoPedestre! = localStorage.getItem('medicoTipoPedestre'+index) ?? ""; 
-            form.pedestres![index].hospitalPedestre! = localStorage.getItem('hospitalPedestre'+index) === "true" ? true : false;
-            form.pedestres![index].hospitalNomePedestre! = localStorage.getItem('hospitalNomePedestre'+index) ?? ""; 
+            form.pedestres![index].nomePedestre = localStorage.getItem('nomePedestre'+index) ?? ""; 
+            form.pedestres![index].cpfPedestre = localStorage.getItem('cpfPedestre'+index) ?? ""; 
+            form.pedestres![index].tipoPedestre = localStorage.getItem('tipoPedestre'+index) ?? ""; 
+            form.pedestres![index].medicoPedestre = localStorage.getItem('medicoPedestre'+index) === "true" ? true : false;
+            form.pedestres![index].medicoTipoPedestre = localStorage.getItem('medicoTipoPedestre'+index) ?? ""; 
+            form.pedestres![index].hospitalPedestre = localStorage.getItem('hospitalPedestre'+index) === "true" ? true : false;
+            form.pedestres![index].hospitalNomePedestre = localStorage.getItem('hospitalNomePedestre'+index) ?? ""; 
         }
 
         form.detalhesFazerBO = localStorage.getItem('detalhesFazerBO') === "true" ? true : false;
@@ -111,13 +109,13 @@ export function PersistenciaDeDadosHook(form: AcidenteDTO, setForm: Dispatch<Set
 
             localStorage.setItem('qtdVitimas'+index, form.veiculos![index].vitimas!.length + ""),
             form.veiculos![index].vitimas!.map((vitima, index2) => (
-                localStorage.setItem('nomeVitima'+index, form.veiculos![index].vitimas![index2].nomeVitima + ""),
-                localStorage.setItem('cpfVitima'+index, form.veiculos![index].vitimas![index2].cpfVitima + ""),
-                localStorage.setItem('tipoVitima'+index, form.veiculos![index].vitimas![index2].tipoVitima + ""),
-                localStorage.setItem('medicoVitima'+index, form.veiculos![index].vitimas![index2].medicoVitima + ""),
-                localStorage.setItem('medicoTipoVitima'+index, form.veiculos![index].vitimas![index2].medicoTipoVitima + ""),
-                localStorage.setItem('hospitalVitima'+index, form.veiculos![index].vitimas![index2].hospitalVitima + ""),
-                localStorage.setItem('hospitalNomeVitima'+index, form.veiculos![index].vitimas![index2].hospitalNomeVitima + "")
+                localStorage.setItem('nomeVitima'+index+'&'+index2, form.veiculos![index].vitimas![index2].nomeVitima + ""),
+                localStorage.setItem('cpfVitima'+index+'&'+index2, form.veiculos![index].vitimas![index2].cpfVitima + ""),
+                localStorage.setItem('tipoVitima'+index+'&'+index2, form.veiculos![index].vitimas![index2].tipoVitima + ""),
+                localStorage.setItem('medicoVitima'+index+'&'+index2, form.veiculos![index].vitimas![index2].medicoVitima + ""),
+                localStorage.setItem('medicoTipoVitima'+index+'&'+index2, form.veiculos![index].vitimas![index2].medicoTipoVitima + ""),
+                localStorage.setItem('hospitalVitima'+index+'&'+index2, form.veiculos![index].vitimas![index2].hospitalVitima + ""),
+                localStorage.setItem('hospitalNomeVitima'+index+'&'+index2, form.veiculos![index].vitimas![index2].hospitalNomeVitima + "")
             ))
         ));
 
@@ -171,16 +169,18 @@ export function PersistenciaDeDadosHook(form: AcidenteDTO, setForm: Dispatch<Set
             localStorage.removeItem('responsavelCPF'+index); 
             
             qtdVitimas = Number.parseInt(localStorage.getItem('qtdVitimas'+index) ?? "0");
-            for (let index = 0; index < qtdVitimas; index++) {
-                localStorage.removeItem('nomeVitima'+index);
-                localStorage.removeItem('cpfVitima'+index);
-                localStorage.removeItem('tipoVitima'+index);
-                localStorage.removeItem('medicoVitima'+index);
-                localStorage.removeItem('medicoTipoVitima'+index);
-                localStorage.removeItem('hospitalVitima'+index);
-                localStorage.removeItem('hospitalNomeVitima'+index);
+            for (let index2 = 0; index2 < qtdVitimas; index2++) {
+                localStorage.removeItem('nomeVitima'+index+'&'+index2);
+                localStorage.removeItem('cpfVitima'+index+'&'+index2);
+                localStorage.removeItem('tipoVitima'+index+'&'+index2);
+                localStorage.removeItem('medicoVitima'+index+'&'+index2);
+                localStorage.removeItem('medicoTipoVitima'+index+'&'+index2);
+                localStorage.removeItem('hospitalVitima'+index+'&'+index2);
+                localStorage.removeItem('hospitalNomeVitima'+index+'&'+index2);
             }
+            localStorage.removeItem('qtdVitimas'+index);
         }
+        localStorage.removeItem('qtdVeiculos');
         
         let qtdPedestres = Number.parseInt(localStorage.getItem('qtdPedestres') ?? "0");
         for (let index = 0; index < qtdPedestres; index++) {
@@ -192,6 +192,7 @@ export function PersistenciaDeDadosHook(form: AcidenteDTO, setForm: Dispatch<Set
             localStorage.removeItem('hospitalPedestre'+index);
             localStorage.removeItem('hospitalNomePedestre'+index);
         }
+        localStorage.removeItem('qtdPedestres');
 
         localStorage.removeItem('detalhesFazerBO');
         localStorage.removeItem('detalhesCPTRAN');

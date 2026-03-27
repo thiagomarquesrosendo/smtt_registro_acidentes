@@ -35,7 +35,7 @@ export function mascaraTextoCPF(form: AcidenteDTO, setForm: Dispatch<SetStateAct
         ...prevState, ...form}));
     };
 
-    return {cpf, handleChangeInputCPF};
+    return {handleChangeInputCPF};
 }
 
 export function mascaraTextoPlacaVeicular(form: AcidenteDTO, setForm: Dispatch<SetStateAction<AcidenteDTO>>) {
@@ -57,12 +57,12 @@ export function mascaraTextoPlacaVeicular(form: AcidenteDTO, setForm: Dispatch<S
 
       setPlaca(placaValida);
 
-      form!.veiculos![indexVeiculo].placa;
+      form!.veiculos![indexVeiculo].placa = placaValida;
       setForm(prevState => ({
         ...prevState, ...form}));
     };
 
-    return {placa, handleChangeInputPlacaVeicular};
+    return {handleChangeInputPlacaVeicular};
 }
 
 export const maskMoney = (event: React.FormEvent<HTMLInputElement>) => {

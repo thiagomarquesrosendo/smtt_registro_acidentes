@@ -17,9 +17,9 @@ export interface VeiculoProps {
 export default function Veiculo(props: VeiculoProps) {
 
     const { form, setForm } = props;
-    const { handleChangeInput, item, setItem, handleChangeSelect, addVeiculo, delVeiculo } = VeiculoHook(form, setForm);
-    const { cpf, handleChangeInputCPF } = mascaraTextoCPF(form, setForm);
-    const { placa, handleChangeInputPlacaVeicular } = mascaraTextoPlacaVeicular(form, setForm);
+    const { handleChangeInput, handleChangeSelect, addVeiculo, delVeiculo } = VeiculoHook(form, setForm);
+    const { handleChangeInputCPF } = mascaraTextoCPF(form, setForm);
+    const { handleChangeInputPlacaVeicular } = mascaraTextoPlacaVeicular(form, setForm);
 
     return (
         <div className="itens">
@@ -31,7 +31,7 @@ export default function Veiculo(props: VeiculoProps) {
                             onClick={() => delVeiculo(indexVeiculo)}>Excluir</button>
                     </div>
 
-                    <select name="tipoVeiculo" value={item} onChange={(e) => handleChangeSelect(indexVeiculo, e)} required>
+                    <select name="tipoVeiculo" value={veiculo.tipoVeiculo} onChange={(e) => handleChangeSelect(indexVeiculo, e)} required>
                         <option value="">Selecione o Tipo de Veículo</option>
                         {listaTiposVeiculos.map((opcoes) => (
                             <option key={opcoes} value={opcoes}>{opcoes}</option>
@@ -39,7 +39,7 @@ export default function Veiculo(props: VeiculoProps) {
                     </select>
 
                     {veiculo.tipoVeiculo !== "Bicicleta" ? (
-                        <input type="text" name="placa" value={placa} placeholder="Placa do veículo" maxLength={7}
+                        <input type="text" name="placa" value={veiculo.placa} placeholder="Placa do veículo" maxLength={7}
                             onChange={(e) => handleChangeInputPlacaVeicular(indexVeiculo, e)} />
                     ) : (
                         <></>
@@ -50,7 +50,7 @@ export default function Veiculo(props: VeiculoProps) {
                         onChange={(e) => handleChangeInput(indexVeiculo, e)} />
 
                     <label>
-                        <input type="checkbox" name="removido" value="Removido para o pátio" checked={veiculo.removido === true} 
+                        <input type="checkbox" name="removido" value="Removido para o pátio" checked={veiculo.removido} 
                             onChange={(e) => handleChangeInput(indexVeiculo, e)} />Removido para o pátio:
                     </label>
                     { veiculo.removido ? (
@@ -58,15 +58,15 @@ export default function Veiculo(props: VeiculoProps) {
                             <span>Tipificação de Auto de Infração:</span>
                             <div className="subGrupoVertical">
                                 <label>
-                                    <input type="radio" name="removidoTipo" value="Licenciamento atrasado" checked={veiculo.removidoTipo === "Licenciamento atrasado"} 
+                                    <input type="radio" name={"removidoTipo" + indexVeiculo} value="Licenciamento atrasado" checked={veiculo.removidoTipo === "Licenciamento atrasado"} 
                                         onChange={(e) => handleChangeInput(indexVeiculo, e)} />Licenciamento atrasado
                                 </label>
                                 <label>
-                                    <input type="radio" name="removidoTipo" value="Estacionamento irregular" checked={veiculo.removidoTipo === "Estacionamento irregular"}  
+                                    <input type="radio" name={"removidoTipo" + indexVeiculo} value="Estacionamento irregular" checked={veiculo.removidoTipo === "Estacionamento irregular"}  
                                         onChange={(e) => handleChangeInput(indexVeiculo, e)} />Estacionamento irregular
                                 </label>
                                 <label>
-                                    <input type="radio" name="removidoTipo" value="Falta de equipamento obrigatório" checked={veiculo.removidoTipo === "Falta de equipamento obrigatório"}  
+                                    <input type="radio" name={"removidoTipo" + indexVeiculo} value="Falta de equipamento obrigatório" checked={veiculo.removidoTipo === "Falta de equipamento obrigatório"}  
                                         onChange={(e) => handleChangeInput(indexVeiculo, e)} />Falta de equipamento obrigatório
                                 </label>
                             </div>
@@ -82,14 +82,14 @@ export default function Veiculo(props: VeiculoProps) {
 
 
                     <label>
-                        <input type="checkbox" name="responsavel" value="Apresentação de responsável pelo veículo" checked={veiculo.responsavel === true} 
+                        <input type="checkbox" name="responsavel" value="Apresentação de responsável pelo veículo" checked={veiculo.responsavel} 
                             onChange={(e) => handleChangeInput(indexVeiculo, e)} />Apresentação de responsável pelo veículo:
                     </label>
                     { veiculo.responsavel ? (
                         <div className="grupoVertical">
                             <input type="text" name="responsavelNome" value={veiculo.responsavelNome} placeholder="Nome do Responsável" 
                                 onChange={(e) => handleChangeInput(indexVeiculo, e)} />
-                            <input type="text" name="responsavelCPF" value={cpf} placeholder="CPF" maxLength={14}
+                            <input type="text" name="responsavelCPF" value={veiculo.responsavelCPF} placeholder="CPF" maxLength={14}
                                 onChange={(e) => handleChangeInputCPF(indexVeiculo, -1, e)} />
                         </div>
                     ) : (

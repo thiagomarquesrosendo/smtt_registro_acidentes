@@ -17,7 +17,7 @@ export function VeiculoHook(form: AcidenteDTO, setForm: Dispatch<SetStateAction<
           form.veiculos![indexVeiculo].numeroOcupantes = value;
         else if (name === "removido")
           form.veiculos![indexVeiculo].removido = checked;
-        else if (name === "removidoTipo")
+        else if (name === "removidoTipo" + indexVeiculo)
           form.veiculos![indexVeiculo].removidoTipo = value;
         else if (name === "removidoAuto")
           form.veiculos![indexVeiculo].removidoAuto = value;
@@ -29,10 +29,8 @@ export function VeiculoHook(form: AcidenteDTO, setForm: Dispatch<SetStateAction<
           form.veiculos![indexVeiculo].responsavelCPF = value;
         
         setForm(prevState => ({
-            ...prevState, ...form, [name]: value}));
+            ...prevState, ...form}));
     }
-
-    const [item, setItem] = useState<string>("");
 
     const handleChangeSelect = (indexVeiculo: number, e: ChangeEvent<HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -40,7 +38,6 @@ export function VeiculoHook(form: AcidenteDTO, setForm: Dispatch<SetStateAction<
         if (name === "tipoVeiculo")
           form.veiculos![indexVeiculo].tipoVeiculo = value;
 
-        setItem(e.target.value);
         setForm(prevState => ({
             ...prevState, ...form, [name]: value}));
     }
@@ -69,5 +66,5 @@ export function VeiculoHook(form: AcidenteDTO, setForm: Dispatch<SetStateAction<
             ...prevState, ...form}));
     }
 
-    return { handleChangeInput, item, setItem, handleChangeSelect, addVeiculo, delVeiculo }
+    return { handleChangeInput, handleChangeSelect, addVeiculo, delVeiculo }
 }

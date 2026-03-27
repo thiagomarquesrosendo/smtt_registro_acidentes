@@ -11,11 +11,11 @@ export function VitimaPedestreHook(form: AcidenteDTO, setForm: Dispatch<SetState
           form.pedestres![indexPedestre].nomePedestre = value;
         else if (name === "cpfPedestre")
           form.pedestres![indexPedestre].cpfPedestre = value;
-        else if (name === "tipoPedestre")
+        else if (name === "tipoPedestre" + indexPedestre)
           form.pedestres![indexPedestre].tipoPedestre = value;
         else if (name === "medicoPedestre")
           form.pedestres![indexPedestre].medicoPedestre = checked;
-        else if (name === "medicoTipoPedestre")
+        else if (name === "medicoTipoPedestre" + indexPedestre)
           form.pedestres![indexPedestre].medicoTipoPedestre = value;
         else if (name === "hospitalPedestre")
           form.pedestres![indexPedestre].hospitalPedestre = checked;

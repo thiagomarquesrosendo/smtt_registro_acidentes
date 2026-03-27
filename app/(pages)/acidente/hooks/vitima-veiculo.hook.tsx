@@ -11,11 +11,11 @@ export function VitimaVeiculoHook(form: AcidenteDTO, setForm: Dispatch<SetStateA
           form.veiculos![indexVeiculo].vitimas![indexVitima].nomeVitima = value;
         else if (name === "cpfVitima")
           form.veiculos![indexVeiculo].vitimas![indexVitima].cpfVitima = value;
-        else if (name === "tipoVitima")
+        else if (name === "tipoVitima" + indexVeiculo + "&" + indexVitima)
           form.veiculos![indexVeiculo].vitimas![indexVitima].tipoVitima = value;
         else if (name === "medicoVitima")
           form.veiculos![indexVeiculo].vitimas![indexVitima].medicoVitima = checked;
-        else if (name === "medicoTipoVitima")
+        else if (name === "medicoTipoVitima" + indexVeiculo + "&" + indexVitima)
           form.veiculos![indexVeiculo].vitimas![indexVitima].medicoTipoVitima = value;
         else if (name === "hospitalVitima")
           form.veiculos![indexVeiculo].vitimas![indexVitima].hospitalVitima = checked;

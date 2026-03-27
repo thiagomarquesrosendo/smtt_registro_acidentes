@@ -35,27 +35,27 @@ export default function VitimaPedestre(props: VitimaPedestreProps) {
                     <span>Tipo de vítima:</span>
                     <div className="grupoHorizontal">
                         <label>
-                            <input type="radio" name="tipoPedestre" value="Condutor" 
+                            <input type="radio" name="tipoPedestre" value="Condutor" checked={pedestre.tipoPedestre === "Condutor"}
                                 onChange={(e) => handleChangeInput(indexPedestre, e)} />Condutor
                         </label>
                         <label>
-                            <input type="radio" name="tipoPedestre" value="Passageiro" 
+                            <input type="radio" name="tipoPedestre" value="Passageiro" checked={pedestre.tipoPedestre === "Passageiro"} 
                                 onChange={(e) => handleChangeInput(indexPedestre, e)} />Passageiro
                         </label>
                     </div>
 
                     <label>
-                        <input type="checkbox" name="medicoPedestre" value="Atendimento Médico" 
+                        <input type="checkbox" name="medicoPedestre" value="Atendimento Médico" checked={pedestre.medicoPedestre === true} 
                             onChange={(e) => handleChangeInput(indexPedestre, e)} />Atendimento Médico:
                     </label>
                     { pedestre.medicoPedestre ? (
                         <div className="grupoHorizontal">
                             <label>
-                                <input type="radio" name="medicoTipoPedestre" value="Samu" 
+                                <input type="radio" name="medicoTipoPedestre" value="Samu" checked={pedestre.medicoTipoPedestre === "Samu"} 
                                     onChange={(e) => handleChangeInput(indexPedestre, e)} />Samu
                             </label>
                             <label>
-                                <input type="radio" name="medicoTipoPedestre" value="Bombeiro" 
+                                <input type="radio" name="medicoTipoPedestre" value="Bombeiro" checked={pedestre.medicoTipoPedestre === "Bombeiro"}  
                                     onChange={(e) => handleChangeInput(indexPedestre, e)} />Bombeiro
                             </label>
                         </div>
@@ -64,12 +64,12 @@ export default function VitimaPedestre(props: VitimaPedestreProps) {
                     ) }
                     
                     <label>
-                        <input type="checkbox" name="hospitalPedestre" value="Conduzido para o Hospital" 
+                        <input type="checkbox" name="hospitalPedestre" value="Conduzido para o Hospital" checked={pedestre.hospitalPedestre === true} 
                             onChange={(e) => handleChangeInput(indexPedestre, e)} />Conduzido para o Hospital:
                     </label>
                     { pedestre.hospitalPedestre ? (
                         <div className="grupoHorizontal">
-                            <input type="text" name="hospitalNomePedestre" placeholder="Nome do Hospital" 
+                            <input type="text" name="hospitalNomePedestre" value={pedestre.hospitalNomePedestre} placeholder="Nome do Hospital" 
                                 onChange={(e) => handleChangeInput(indexPedestre, e)} />
                         </div>
                     ) : (

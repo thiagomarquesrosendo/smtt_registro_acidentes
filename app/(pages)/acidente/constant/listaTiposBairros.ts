@@ -1,6 +1,10 @@
-export const listaTiposBairros: Record<string, string[]> = {
-    "Bairros": ["Centro", "Getúlio Vargas", "Cirurgia", "Pereira Lobo", "Suissa", "Salgado Filho", "13 de Julho", "Dezoito do Forte", "Palestina", "Santo Antonio", "Industrial", "Santos Dumont", "José Conrado de Araújo", "Novo Paraíso", "América", "Siqueira Campos", "Soledade", "Lamarão", "Cidade Nova", "Japãozinho ", "Porto Dantas", "Bugio", "Jardim Centenário", "Olaria", "Capucho", "Jabotiana", "Ponto Novo", "Luzia", "Grageru", "Jardins", "Inácio Barbosa", "São Conrado", "Farolândia", "Coroa do Meio", "Aeroporto", "Atalaia", "Santa Maria", "Zona de Expansão", "São José"]
-}
+export const listaTiposBairros: string[] = [
+    "Centro", "Getúlio Vargas", "Cirurgia", "Pereira Lobo", "Suissa", "Salgado Filho", "Treze de Julho", "Dezoito do Forte", "Palestina", "Santo Antonio", 
+    "Industrial", "Santos Dumont", "José Conrado de Araújo", "Novo Paraíso", "América", "Siqueira Campos", "Soledade", "Lamarão", "Cidade Nova", "Japãozinho ", 
+    "Porto Dantas", "Bugio", "Jardim Centenário", "Olaria", "Capucho", "Jabotiana", "Ponto Novo", "Luzia", "Grageru", "Jardins", "Inácio Barbosa", "São Conrado", 
+    "Farolândia", "Coroa do Meio", "Aeroporto", "Atalaia", "Santa Maria", "Zona de Expansão", "São José", "17 de março", "Areia Branca", "Aruana", "Dom Luciano", 
+    "Gamaleira", "Marivan", "Matapoã", "Mosqueiro", "Robalo", "São José dos Náufragos"
+]
 
 /*
 LISTA DE BAIRROS ENUMERADOS
@@ -44,6 +48,20 @@ LISTA DE BAIRROS ENUMERADOS
 37. Santa Maria
 38. Zona de Expansão
 39. São José
+
+== Acrescentados ==
+
+17 de março
+Areia Branca
+Aruana
+Dom Luciano
+Gamaleira
+Marivan
+Matapoã
+Mosqueiro
+Robalo
+São José dos Náufragos
+
 */
 
 /*
@@ -88,6 +106,19 @@ Atalaia
 Santa Maria
 Zona de Expansão
 São José
+
+== Acrescentados ==
+
+17 de março
+Areia Branca
+Aruana
+Dom Luciano
+Gamaleira
+Marivan
+Matapoã
+Mosqueiro
+Robalo
+São José dos Náufragos
 */
 
 /*

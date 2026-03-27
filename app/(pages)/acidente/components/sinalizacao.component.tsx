@@ -17,20 +17,24 @@ export default function Sinalizacao(props: SinalizacaoProps) {
     return (
         <div>
             <label>
-                <input type="radio" name="sinalizacao" value="Existente" onChange={handleChangeInput} />Existente
+                <input type="radio" name="sinalizacao" value="Existente" checked={form.sinalizacao === "Existente"}
+                    onChange={handleChangeInput} />Existente
             </label>
             <label>
-                <input type="radio" name="sinalizacao" value="Precária" onChange={handleChangeInput} />Precária
+                <input type="radio" name="sinalizacao" value="Precária" checked={form.sinalizacao === "Precária"} 
+                    onChange={handleChangeInput} />Precária
             </label>
             <label>
-                <input type="radio" name="sinalizacao" value="Inexistente" onChange={handleChangeInput} />Inexistente
+                <input type="radio" name="sinalizacao" value="Inexistente" checked={form.sinalizacao === "Inexistente"} 
+                    onChange={handleChangeInput} />Inexistente
             </label>
             <label>
-                <input type="radio" name="sinalizacao" value="Deficiente" onChange={handleChangeInput} />Deficiente
+                <input type="radio" name="sinalizacao" value="Deficiente" checked={form.sinalizacao === "Deficiente"} 
+                    onChange={handleChangeInput} />Deficiente
             </label>
             
             
-            <textarea rows={2} cols={30} name="sinalizacaoObs" placeholder="Informe mais detalhes da Sinalização" 
+            <textarea rows={2} cols={30} name="sinalizacaoObs" value={form.sinalizacaoObs} placeholder="Informe mais detalhes da Sinalização" 
                 onChange={handleChangeTextarea} >
             </textarea>
         </div>

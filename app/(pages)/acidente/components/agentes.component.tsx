@@ -16,7 +16,7 @@ export default function Agentes(props: AgentesProps) {
 
     return (
         <div>
-            <input type="text" name="agentesOcorrencia" placeholder="Nomes dos Agentes" required 
+            <input type="text" name="agentesOcorrencia" value={form.agentesOcorrencia} placeholder="Nomes dos Agentes" required 
                 onChange={handleChangeInput} />
         </div>
     );

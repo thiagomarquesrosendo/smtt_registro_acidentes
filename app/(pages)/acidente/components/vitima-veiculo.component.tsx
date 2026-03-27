@@ -38,27 +38,27 @@ export default function VitimaVeiculo(props: VitimaVeiculoProps) {
                         <span>Tipo de vítima:</span>
                         <div className="grupoHorizontal">
                             <label>
-                                <input type="radio" name="tipoVitima" value="Condutor" 
+                                <input type="radio" name="tipoVitima" value="Condutor" checked={vitima.tipoVitima === "Condutor"}
                                     onChange={(e) => handleChangeInput(indexVeiculo, indexVitima, e)} />Condutor
                             </label>
                             <label>
-                                <input type="radio" name="tipoVitima" value="Passageiro" 
+                                <input type="radio" name="tipoVitima" value="Passageiro" checked={vitima.tipoVitima === "Passageiro"} 
                                     onChange={(e) => handleChangeInput(indexVeiculo, indexVitima, e)} />Passageiro
                             </label>
                         </div>
 
                         <label>
-                            <input type="checkbox" name="medicoVitima" value="Atendimento Médico" 
+                            <input type="checkbox" name="medicoVitima" value="Atendimento Médico" checked={vitima.medicoVitima === true}  
                                 onChange={(e) => handleChangeInput(indexVeiculo, indexVitima, e)} />Atendimento Médico:
                         </label>
                         { vitima.medicoVitima ? (
                             <div className="grupoHorizontal">
                                 <label>
-                                    <input type="radio" name="medicoTipoVitima" value="Samu" 
+                                    <input type="radio" name="medicoTipoVitima" value="Samu" checked={vitima.medicoTipoVitima === "Samu"}  
                                         onChange={(e) => handleChangeInput(indexVeiculo, indexVitima, e)} />Samu
                                 </label>
                                 <label>
-                                    <input type="radio" name="medicoTipoVitima" value="Bombeiro" 
+                                    <input type="radio" name="medicoTipoVitima" value="Bombeiro" checked={vitima.medicoTipoVitima === "Bombeiro"}   
                                         onChange={(e) => handleChangeInput(indexVeiculo, indexVitima, e)} />Bombeiro
                                 </label>
                             </div>
@@ -67,12 +67,12 @@ export default function VitimaVeiculo(props: VitimaVeiculoProps) {
                         ) }
                         
                         <label>
-                            <input type="checkbox" name="hospitalVitima" value="Conduzido para o Hospital" 
+                            <input type="checkbox" name="hospitalVitima" value="Conduzido para o Hospital" checked={vitima.hospitalVitima === true} 
                                 onChange={(e) => handleChangeInput(indexVeiculo, indexVitima, e)} />Conduzido para o Hospital:
                         </label>
                         { vitima.hospitalVitima ? (
                             <div className="grupoHorizontal">
-                                <input type="text" name="hospitalNomeVitima" placeholder="Nome do Hospital" 
+                                <input type="text" name="hospitalNomeVitima" value={vitima.hospitalNomeVitima} placeholder="Nome do Hospital" 
                                     onChange={(e) => handleChangeInput(indexVeiculo, indexVitima, e)} />
                             </div>
                         ) : (

@@ -5,10 +5,10 @@ export class VeiculoDTO {
     placa?: string;
     nomeCondutor?: string;
     numeroOcupantes?: string;
-    removido?: boolean;
+    removido: boolean = false;
     removidoTipo?: string;
     removidoAuto?: string;
-    responsavel?: boolean;
+    responsavel: boolean = false;
     responsavelNome?: string;
     responsavelCPF?: string;
 

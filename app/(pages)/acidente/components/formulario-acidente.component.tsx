@@ -14,10 +14,12 @@ import Veiculo from "./veiculo.component";
 import Agentes from "./agentes.component";
 import "../../../css/layout.css";
 import "../../../css/formulario.css";
+import { PersistenciaDeDadosHook } from "../hooks/persistenciaDeDados.hook";
 
 export default function FormularioAcidente() {
 
     const { form, setForm, images, handleImages, removeImage, sendToWhatsApp, registroDeAcidente } = FormularioAcidenteHook();
+    const { salvarDados, receberDados, limparDados } = PersistenciaDeDadosHook(form, setForm);
 
     return (
         <form onSubmit={sendToWhatsApp} className="fundoFormulario">
@@ -61,6 +63,12 @@ export default function FormularioAcidente() {
             </div> */}
 
             <button type="submit" value="Enviar" className="add" >Enviar Informações</button>
+
+            <div>
+                <button type="button" className="clear" onClick={() => salvarDados()}>Salvar</button>
+                <button type="button" className="exibir" onClick={() => receberDados()}>Receber</button>
+                <button type="button" className="popup" onClick={() => limparDados()}>Limpar</button>
+            </div>
         </form>
     );
 }

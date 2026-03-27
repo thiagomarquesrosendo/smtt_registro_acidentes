@@ -7,6 +7,7 @@ import { VeiculoHook } from "../hooks/veiculo.hook";
 import { Dispatch, SetStateAction } from "react";
 import { mascaraTextoCPF, mascaraTextoPlacaVeicular } from "../hooks/mascara-texto.hook";
 import Subtitulo from "@/app/components/design/subtitulo.component";
+import { listaTiposVeiculos } from "../constant/listaTiposVeiculos";
 
 export interface VeiculoProps {
     form: AcidenteDTO;
@@ -16,7 +17,7 @@ export interface VeiculoProps {
 export default function Veiculo(props: VeiculoProps) {
 
     const { form, setForm } = props;
-    const { handleChangeInput, handleChangeSelect, addVeiculo, delVeiculo } = VeiculoHook(form, setForm);
+    const { handleChangeInput, item, setItem, handleChangeSelect, addVeiculo, delVeiculo } = VeiculoHook(form, setForm);
     const { cpf, handleChangeInputCPF } = mascaraTextoCPF(form, setForm);
     const { placa, handleChangeInputPlacaVeicular } = mascaraTextoPlacaVeicular(form, setForm);
 
@@ -30,13 +31,11 @@ export default function Veiculo(props: VeiculoProps) {
                             onClick={() => delVeiculo(indexVeiculo)}>Excluir</button>
                     </div>
 
-                    <select name="tipoVeiculo" onChange={(e) => handleChangeSelect(indexVeiculo, e)} required>
+                    <select name="tipoVeiculo" value={item} onChange={(e) => handleChangeSelect(indexVeiculo, e)} required>
                         <option value="">Selecione o Tipo de Veículo</option>
-                        <option value="Bicicleta">Bicicleta</option>
-                        <option value="Motocicleta">Motocicleta</option>
-                        <option value="Carro">Carro</option>
-                        <option value="Caminhão">Caminhão</option>
-                        <option value="Ônibus">Ônibus</option>
+                        {listaTiposVeiculos.map((opcoes) => (
+                            <option key={opcoes} value={opcoes}>{opcoes}</option>
+                        ))}
                     </select>
 
                     {veiculo.tipoVeiculo !== "Bicicleta" ? (
@@ -51,29 +50,29 @@ export default function Veiculo(props: VeiculoProps) {
                         onChange={(e) => handleChangeInput(indexVeiculo, e)} />
 
                     <label>
-                        <input type="checkbox" name="removido" value="Removido para o pátio" 
+                        <input type="checkbox" name="removido" value="Removido para o pátio" checked={veiculo.removido === true} 
                             onChange={(e) => handleChangeInput(indexVeiculo, e)} />Removido para o pátio:
                     </label>
                     { veiculo.removido ? (
                         <div className="grupoVertical">
                             <span>Tipificação de Auto de Infração:</span>
-                            <div className="horizontal_2">
+                            <div className="subGrupoVertical">
                                 <label>
-                                    <input type="radio" name="removidoTipo" value="Licenciamento Atrasado" 
-                                        onChange={(e) => handleChangeInput(indexVeiculo, e)} />Licenciamento Atrasado
+                                    <input type="radio" name="removidoTipo" value="Licenciamento atrasado" checked={veiculo.removidoTipo === "Licenciamento atrasado"} 
+                                        onChange={(e) => handleChangeInput(indexVeiculo, e)} />Licenciamento atrasado
                                 </label>
                                 <label>
-                                    <input type="radio" name="removidoTipo" value="Estacionamnto irregular" 
-                                        onChange={(e) => handleChangeInput(indexVeiculo, e)} />Estacionamnto irregular
+                                    <input type="radio" name="removidoTipo" value="Estacionamento irregular" checked={veiculo.removidoTipo === "Estacionamento irregular"}  
+                                        onChange={(e) => handleChangeInput(indexVeiculo, e)} />Estacionamento irregular
                                 </label>
                                 <label>
-                                    <input type="radio" name="removidoTipo" value="Falta de equipamento obrigatório" 
+                                    <input type="radio" name="removidoTipo" value="Falta de equipamento obrigatório" checked={veiculo.removidoTipo === "Falta de equipamento obrigatório"}  
                                         onChange={(e) => handleChangeInput(indexVeiculo, e)} />Falta de equipamento obrigatório
                                 </label>
                             </div>
                             
-                            <div className="horizontal_2">
-                                <input type="text" name="removidoAuto" placeholder="Número do Auto de Infração" 
+                            <div className="subGrupoHorizontal">
+                                <input type="text" name="removidoAuto" value={veiculo.removidoAuto} placeholder="Número do Auto de Infração" 
                                     onChange={(e) => handleChangeInput(indexVeiculo, e)} />
                             </div>
                         </div>
@@ -83,12 +82,12 @@ export default function Veiculo(props: VeiculoProps) {
 
 
                     <label>
-                        <input type="checkbox" name="responsavel" value="Apresentação de responsável pelo veículo" 
+                        <input type="checkbox" name="responsavel" value="Apresentação de responsável pelo veículo" checked={veiculo.responsavel === true} 
                             onChange={(e) => handleChangeInput(indexVeiculo, e)} />Apresentação de responsável pelo veículo:
                     </label>
                     { veiculo.responsavel ? (
                         <div className="grupoVertical">
-                            <input type="text" name="responsavelNome" placeholder="Nome do Responsável" 
+                            <input type="text" name="responsavelNome" value={veiculo.responsavelNome} placeholder="Nome do Responsável" 
                                 onChange={(e) => handleChangeInput(indexVeiculo, e)} />
                             <input type="text" name="responsavelCPF" value={cpf} placeholder="CPF" maxLength={14}
                                 onChange={(e) => handleChangeInputCPF(indexVeiculo, -1, e)} />

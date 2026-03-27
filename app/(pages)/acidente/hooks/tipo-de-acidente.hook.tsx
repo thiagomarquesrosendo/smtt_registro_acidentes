@@ -11,14 +11,14 @@ export function TipoDeAcidenteHook(form: AcidenteDTO, setForm: Dispatch<SetState
     const [opcoesSubItem, setOpcoesSubItem] = useState<string[]>([]);
 
     useEffect(() => {
-        if (item) {
-            setOpcoesSubItem(listaTiposAcidentes[item] || []);
+        if (form.tipoAcidente) {
+            setOpcoesSubItem(listaTiposAcidentes[form.tipoAcidente] || []);
             setSubItem("");
         } else {
             setOpcoesSubItem([]);
             setSubItem("");
         }
-    }, [item]);
+    }, [form.tipoAcidente]);
 
     const handleChangeTipoAcidente = (e: ChangeEvent<HTMLSelectElement>) => {
         form.tipoAcidente = e.target.value;
@@ -37,5 +37,5 @@ export function TipoDeAcidenteHook(form: AcidenteDTO, setForm: Dispatch<SetState
             ...prevState, ...form, [name]: value}));
     }
 
-    return { item, setItem, subItem, setSubItem, opcoesSubItem, handleChangeTipoAcidente, handleChangeSubTipoAcidente, handleChangeTextArea }
+    return { opcoesSubItem, handleChangeTipoAcidente, handleChangeSubTipoAcidente, handleChangeTextArea }
 }

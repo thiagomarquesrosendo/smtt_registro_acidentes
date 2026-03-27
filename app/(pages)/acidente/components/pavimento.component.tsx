@@ -17,19 +17,19 @@ export default function Pavimento(props: PavimentoProps) {
     return (
         <div>
             <label>
-                <input type="radio" name="pavimento" value="Asfalto" 
+                <input type="radio" name="pavimento" value="Asfalto" checked={form.pavimento === "Asfalto"}
                     onChange={handleChangeInput} />Asfalto
             </label>
             <label>
-                <input type="radio" name="pavimento" value="Esburacado" 
+                <input type="radio" name="pavimento" value="Esburacado" checked={form.pavimento === "Esburacado"} 
                     onChange={handleChangeInput} />Esburacado
             </label>
             <label>
-                <input type="radio" name="pavimento" value="Calçamento" 
+                <input type="radio" name="pavimento" value="Calçamento" checked={form.pavimento === "Calçamento"} 
                     onChange={handleChangeInput} />Calçamento
             </label>
             <label>
-                <input type="radio" name="pavimento" value="Terra" 
+                <input type="radio" name="pavimento" value="Terra" checked={form.pavimento === "Terra"} 
                     onChange={handleChangeInput} />Terra
             </label>
         </div>

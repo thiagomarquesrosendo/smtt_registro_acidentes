@@ -17,15 +17,15 @@ export default function GravidadeDoAcidente(props: GravidadeDoAcidenteProps) {
     return (
         <div>
             <label>
-                <input type="radio" name="gravidade" value="Apenas danos materiais" required
+                <input type="radio" name="gravidade" value="Apenas danos materiais" checked={form.gravidade === "Apenas danos materiais"} required
                     onChange={handleChangeInput} />Apenas danos materiais
             </label>
             <label>
-                <input type="radio" name="gravidade" value="Com vítimas (apenas feridos)" required
+                <input type="radio" name="gravidade" value="Com vítimas (apenas feridos)" checked={form.gravidade === "Com vítimas (apenas feridos)"} required
                     onChange={handleChangeInput} />Com vítimas (apenas feridos)
             </label>
             <label>
-                <input type="radio" name="gravidade" value="Com vítimas fatais" required
+                <input type="radio" name="gravidade" value="Com vítimas fatais" checked={form.gravidade === "Com vítimas fatais"} required
                     onChange={handleChangeInput} />Com vítimas fatais
             </label>
         </div>

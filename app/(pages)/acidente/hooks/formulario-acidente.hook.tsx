@@ -1,4 +1,4 @@
- import { useState } from "react";
+ import { useEffect, useState } from "react";
 import { EnviarFotos } from "./enviar-fotos.hook";
 import { AcidenteDTO } from "../dto/Acidente.dto";
 import { VitimaDTO } from "../dto/Vitima.dto";
@@ -31,14 +31,15 @@ export function FormularioAcidenteHook() {
     iluminacaoNoite: "",
     pavimento: "",
   });
+  
 
 
   function registroDeAcidente(): string {
 
-    const message = `📋 *REGISTRO DE ACIDENTES DE TRÂNSITO* ✅
+    const message = `📋 *REGISTRO DE ACIDENTE DE TRÂNSITO* ✅
 
 -------------------------------------------------------
-🧭 *DADOS DO LOCAL DO ACIDENTE*
+🧭 *LOCAL DO ACIDENTE*
 
   *Logradouro:* ${form.logradouro}
   *Ponto de Referência:* ${form.pontoReferencia}
@@ -46,7 +47,7 @@ export function FormularioAcidenteHook() {
   *Horário:* ${form.horario}
 
 -------------------------------------------------------
-👨‍✈️ *AGENTES QUE ATENDERAM A OCORRÊNCIA*
+👨‍✈️ *AGENTES NA OCORRÊNCIA*
 
   *Nomes:* ${form.agentesOcorrencia}
 
@@ -56,62 +57,52 @@ export function FormularioAcidenteHook() {
   *Tipo de Acidente:* ${form.tipoAcidente} ${form.tipoAcidenteSubTipo}
   *Gravidade:* ${form.gravidade}
   *Outras informações:* ${form.tipoAcidenteObs}
-
 ${form.veiculos!.length > 0 ? (
 `-------------------------------------------------------
-🚔 *DADOS DOS VEÍCULOS*
+🚔 *VEÍCULOS ENVOLVIDOS*
 ${form.veiculos!.map((veiculo: VeiculoDTO, indexVeiculo: number) => (
-`  ${indexVeiculo + 1}) VEÍCULO 🚗🚴‍♀️🚛🏍️
+`  ${indexVeiculo + 1}) VEÍCULO ${veiculo.tipoVeiculo === "Bicicleta" ? `🚴‍♀️` : (veiculo.tipoVeiculo === "Motocicleta" ? `🏍️` : (veiculo.tipoVeiculo === "Carro" ? `🚗` : (veiculo.tipoVeiculo === "Caminhão" ? `🚛` : (veiculo.tipoVeiculo === "Ônibus" ? `🚌` : ``)) ) )}
 
-  Tipo de Veículo: ${veiculo.tipoVeiculo}
-  Placa: ${veiculo.placa}
-  Nome do Condutor: ${veiculo.nomeCondutor}
-  Número de Ocupantes: ${veiculo.numeroOcupantes} pessoa(s)
-  ${veiculo.removido ? (
-`  Removido para o pátio:
+  *Tipo de Veículo:* ${veiculo.tipoVeiculo}
+  *Placa:* ${veiculo.placa}
+  *Nome do Condutor:* ${veiculo.nomeCondutor}
+  *Número de Ocupantes:* ${veiculo.numeroOcupantes} pessoa(s)
+  ${veiculo.removido ? (`  *Removido para o pátio:*
     - Tipificação do AIT: ${veiculo.removidoTipo}
     - Número do AIT: ${veiculo.removidoAuto}`) : (``)}
-    ${veiculo.responsavel ? (
-`  Responsável pelo veículo:
+    ${veiculo.responsavel ? (`  *Responsável pelo veículo:*
     - Nome: ${veiculo.responsavelNome}
     - CPF: ${veiculo.responsavelCPF}`) : (``)}
 
-    VÍTIMAS
+    ${veiculo.vitimas?.length! > 0 ? (
+`      VÍTIMAS
   
-    - Número de vítimas: ${veiculo.vitimas?.length} vítima(s)
+      - Número de vítimas: ${veiculo.vitimas?.length} vítima(s)
     ${veiculo.vitimas!.map((vitima: VitimaDTO, indexVitima: number) => (
-`    ${indexVitima + 1}) VÍTIMA
+`      ${indexVitima + 1}) VÍTIMA
 
-    Nome da Vitima: ${vitima.nomeVitima}
-    CPF: ${vitima.cpfVitima}
-    Tipo de vítima: ${vitima.tipoVitima}
-    ${vitima.medicoVitima ? (`
-    Atendimento Médico:
-      - Tipo de Atendimento: ${vitima.medicoTipoVitima}
-      - Conduzido para o Hospital: ${vitima.hospitalVitima}
-      - Nome do Hospital: ${vitima.hospitalNomeVitima}`) : (``)}
-    `))}
-
-`))}`) : (``)}
-
+      *Nome da Vitima:* ${vitima.nomeVitima}
+      *CPF:* ${vitima.cpfVitima}
+      *Tipo de vítima:* ${vitima.tipoVitima}
+    ${vitima.medicoVitima ? (`      *Atendimento Médico:*
+        - Tipo de Atendimento: ${vitima.medicoTipoVitima}
+        - Conduzido para o Hospital: ${vitima.hospitalVitima}
+        - Nome do Hospital: ${vitima.hospitalNomeVitima}`) : (``)}
+    `))} `) : (``)} `))}`) : (``)}
 ${form.pedestres!.length > 0 ? (
 `-------------------------------------------------------
 🚶‍♂️ *DADOS DOS PEDESTRES*
-${form.pedestres!.map((pedestre: PedestreDTO, indexPedestre: number) => (`
-  ${indexPedestre + 1}) VÍTIMA
+${form.pedestres!.map((pedestre: PedestreDTO, indexPedestre: number) => (
+`  ${indexPedestre + 1}) VÍTIMA
 
-  Nome da Vitima: ${pedestre.nomePedestre}
-  CPF: ${pedestre.cpfPedestre}
-  Tipo de vítima: ${pedestre.tipoPedestre}
-
-${pedestre.medicoPedestre ? (`
-  Atendimento Médico:
+  *Nome da Vitima:* ${pedestre.nomePedestre}
+  *CPF:* ${pedestre.cpfPedestre}
+  *Tipo de vítima:* ${pedestre.tipoPedestre}
+${pedestre.medicoPedestre ? (`  *Atendimento Médico:*
     - Tipo de Atendimento: ${pedestre.medicoTipoPedestre}
     - Conduzido para o Hospital: ${pedestre.hospitalPedestre}
     - Nome do Hospital: ${pedestre.hospitalNomePedestre}
-`) : (``)}
-`))}
-`) : (``)}
+`) : (``)} `))} `) : (``)}
 
 -------------------------------------------------------
 📝 *MAIS DETALHES DO ACIDENTE*
@@ -121,7 +112,6 @@ ${form.detalhesFazerBO ? (`  *Orientados a fazer Boletim de Ocorrência.*
 `) : ""}${form.detalhesIML ? (`  *IML esteve presente no local.*
 `) : ""}${form.detalhesAcordo ? (`  *Acordo formal pré-processual:*
      - Nº Acordo: ` + form.detalhesAcordoNumero) : ""}
-
   *Clima:* ${form.climaTipo}
   *Sinalização:* ${form.sinalizacao}
     - Observações: ${form.sinalizacaoObs}

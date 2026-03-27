@@ -137,9 +137,18 @@ h2 {
     border: solid 2px rgb(209, 221, 189);
 }
 
-.fundoFormulario .lista .grupoVertical .horizontal_2 {
+.fundoFormulario .lista .grupoVertical .subGrupoHorizontal {
     display: flex;
     flex-direction: row;
+    margin: 5px 0px 5px 5px;
+    padding: 10px;
+    background: rgb(209, 221, 189);
+    border: solid 2px rgb(199, 211, 179);
+}
+
+.fundoFormulario .lista .grupoVertical .subGrupoVertical {
+    display: flex;
+    flex-direction: column;
     margin: 5px 0px 5px 5px;
     padding: 10px;
     background: rgb(209, 221, 189);
@@ -192,6 +201,12 @@ button {
     padding: 0.7em;
     margin: 10px;
     font-weight: bold;
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(0.95); /* Dá um efeito de "pressionado" */
+    cursor: pointer;
 }
 
 button[type="submit"] {
@@ -211,42 +226,72 @@ button.blue {
     background-color: #4995e7;
 }
 
+button.clear {
+  background-color: rgb(73, 146, 255);
+  border: 2px solid rgb(73, 146, 255);
+}
 
-input, textarea, select {
+button.exibir {
+  background-color: rgb(255, 206, 73);
+  border: 2px solid rgb(245, 196, 63);
+}
+
+button.popup {
+  background-color: #333;
+  border: 2px solid #444;
+  color: white;
+}
+
+input,
+textarea,
+select {
+    display: flex;
+    flex-direction: column;
     background-color: rgb(255, 255, 255);
     border: solid 2px rgb(245, 245, 245);
-    padding: 10px;
     border-radius: 0.5em;
+    outline: none;
+    padding: 10px;
     margin: 4px;
     color: black;
     font-weight: bold;
-    display: flex;
-    flex-direction: column;
 }
 
-
-input:focus, textarea:focus, select:focus {
-    border-color: #007bff;
+input:hover, 
+textarea:hover, 
+select:hover {
+    border-color: rgb(205, 205, 205);
     background-color: #fff;
 }
 
-input[type="time"] {
-    padding: 10px;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    color: #333;
-    background-color: #f9f9f9;
-    outline: none;
+input:focus, 
+textarea:focus, 
+select:focus {
+    background-color: #fff;
+    border-color: #007bff;
     transition: border-color 0.3s;
 }
 
-input[type="time"]:focus {
-    border-color: #007bff;
+input:active, 
+textarea:active, 
+select:active {
     background-color: #fff;
+    border-color: #007bff;
+    transition: border-color 0.3s;
 }
 
+input[type="checkbox"],
+input[type="radio"] {
+  background-color: rgb(50, 143, 22);
+  accent-color: rgb(50, 143, 22);
+  margin: 5px 5px;
+  width: 18px;
+  height: 18px;
+}
+
+label {
+  cursor: pointer;
+}
 
 
 /*

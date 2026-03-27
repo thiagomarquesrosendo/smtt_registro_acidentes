@@ -2,8 +2,8 @@ export class PedestreDTO {
     nomePedestre?: string;
     cpfPedestre?: string;
     tipoPedestre?: string;
-    medicoPedestre?: boolean;
+    medicoPedestre: boolean = false;
     medicoTipoPedestre?: string;
-    hospitalPedestre?: boolean;
+    hospitalPedestre: boolean = false;
     hospitalNomePedestre?: string;
 }

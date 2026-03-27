@@ -13,7 +13,6 @@ export function LogradouroHook(form: AcidenteDTO, setForm: Dispatch<SetStateActi
     }
     
     const [item, setItem] = useState<string>("");
-    const [opcoesSubItem, setOpcoesSubItem] = useState<string[]>([]);
 
     const handleChangeSelect = (e: ChangeEvent<HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -22,10 +21,6 @@ export function LogradouroHook(form: AcidenteDTO, setForm: Dispatch<SetStateActi
         setForm(prevState => ({
             ...prevState, ...form, [name]: value}));
     }
-    
-    useEffect(() => {
-        setOpcoesSubItem(listaTiposBairros["Bairros"]);
-    }, []);
 
-    return { handleChangeInput, item, setItem, opcoesSubItem, handleChangeSelect }
+    return { handleChangeInput, item, setItem, handleChangeSelect }
 }

@@ -17,15 +17,15 @@ export default function Clima(props: ClimaProps) {
     return (
         <div>
             <label>
-                <input type="radio" name="climaTipo" value="Claro" 
+                <input type="radio" name="climaTipo" value="Claro" checked={form.climaTipo === "Claro"} 
                     onChange={handleChangeInput} />Claro
             </label>
             <label>
-                <input type="radio" name="climaTipo" value="Chuvoso" 
+                <input type="radio" name="climaTipo" value="Chuvoso" checked={form.climaTipo === "Chuvoso"} 
                     onChange={handleChangeInput} />Chuvoso
             </label>
             <label>
-                <input type="radio" name="climaTipo" value="Nublado" 
+                <input type="radio" name="climaTipo" value="Nublado" checked={form.climaTipo === "Nublado"} 
                     onChange={handleChangeInput} />Nublado
             </label>
         </div>

@@ -17,25 +17,25 @@ export default function MaisDetalhesDoAcidente(props: MaisDetalhesDoAcidenteProp
     return (
         <div>
             <label>
-                <input type="checkbox" name="detalhesFazerBO" value="Orientados a fazer Boletim de Ocorrência" 
+                <input type="checkbox" name="detalhesFazerBO" value="Orientados a fazer Boletim de Ocorrência" checked={form.detalhesFazerBO}
                     onChange={handleChangeInput} />Orientados a fazer Boletim de Ocorrência
             </label>
             <label>
-                <input type="checkbox" name="detalhesCPTRAN" value="CPTRAN" 
+                <input type="checkbox" name="detalhesCPTRAN" value="CPTRAN" checked={form.detalhesCPTRAN}
                     onChange={handleChangeInput} />CPTRAN
             </label>
             <label>
-                <input type="checkbox" name="detalhesIML" value="IML" 
+                <input type="checkbox" name="detalhesIML" value="IML" checked={form.detalhesIML} 
                     onChange={handleChangeInput} />IML
             </label>
             <label>
-                <input type="checkbox" name="detalhesAcordo" value="Acordo formal pré-processual" 
+                <input type="checkbox" name="detalhesAcordo" value="Acordo formal pré-processual" checked={form.detalhesAcordo} 
                     onChange={handleChangeInput} />Acordo formal pré-processual
             </label>
             
             { form.detalhesAcordo ? (
                 <div className="nivel1">
-                    <input type="text" name="detalhesAcordoNumero" placeholder="Número do Acordo" required
+                    <input type="text" name="detalhesAcordoNumero" value={form.detalhesAcordoNumero} placeholder="Número do Acordo" required
                         onChange={handleChangeInput} />
                 </div>
             ) : (

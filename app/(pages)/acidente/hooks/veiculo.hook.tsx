@@ -1,7 +1,8 @@
 'use client'
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { AcidenteDTO } from "../dto/Acidente.dto";
 import { Dispatch, SetStateAction } from "react";
+import { listaTiposVeiculos } from "../constant/listaTiposVeiculos";
 
 export function VeiculoHook(form: AcidenteDTO, setForm: Dispatch<SetStateAction<AcidenteDTO>>) {
 
@@ -31,12 +32,15 @@ export function VeiculoHook(form: AcidenteDTO, setForm: Dispatch<SetStateAction<
             ...prevState, ...form, [name]: value}));
     }
 
+    const [item, setItem] = useState<string>("");
+
     const handleChangeSelect = (indexVeiculo: number, e: ChangeEvent<HTMLSelectElement>) => {
         const { name, value } = e.target;
 
         if (name === "tipoVeiculo")
           form.veiculos![indexVeiculo].tipoVeiculo = value;
 
+        setItem(e.target.value);
         setForm(prevState => ({
             ...prevState, ...form, [name]: value}));
     }
@@ -65,5 +69,5 @@ export function VeiculoHook(form: AcidenteDTO, setForm: Dispatch<SetStateAction<
             ...prevState, ...form}));
     }
 
-    return { handleChangeInput, handleChangeSelect, addVeiculo, delVeiculo }
+    return { handleChangeInput, item, setItem, handleChangeSelect, addVeiculo, delVeiculo }
 }

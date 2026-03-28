@@ -1,5 +1,6 @@
-import "../../css/formulario.css";
 import "../../css/layout.css";
+import "../../css/geral.css";
+import "../../css/formulario.css";
 import Pagina from "@/app/components/layout/pagina.component";
 import Titulo from "@/app/components/design/titulo.component";
 import FormularioAcidente from "./components/formulario-acidente.component";

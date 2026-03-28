@@ -13,6 +13,7 @@ import Pavimento from "./pavimento.component";
 import Veiculo from "./veiculo.component";
 import Agentes from "./agentes.component";
 import "../../../css/layout.css";
+import "../../../css/geral.css";
 import "../../../css/formulario.css";
 import { PersistenciaDeDadosHook } from "../hooks/persistenciaDeDados.hook";
 

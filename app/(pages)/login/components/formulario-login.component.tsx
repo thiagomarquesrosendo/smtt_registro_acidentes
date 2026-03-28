@@ -1,6 +1,7 @@
 "use client"
 import Titulo from "@/app/components/design/titulo.component";
 import { FormularioLoginHook } from "../hooks/formulario-login.hook";
+import "../../../css/login.css"
 
 export default function FormularioLogin() {
 

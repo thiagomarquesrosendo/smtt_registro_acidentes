@@ -1,4 +1,5 @@
-import "../../css/formulario.css"
+import "../../css/geral.css";
+import "../../css/formulario.css";
 
 export interface TituloProps {
     text: string;

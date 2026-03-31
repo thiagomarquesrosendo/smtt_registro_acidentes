@@ -3,11 +3,14 @@ import "./css/menu.css"
 import Pagina from "./components/layout/pagina.component";
 import DadosCripotografados from "./components/dadosCriptografados";
 import Link from "next/link";
+import PopupOpcoes from "./(pages)/acidente/components/popup-opcoes.component";
 
 export default function Home() {
 
   return (
     <Pagina>
+      <PopupOpcoes />
+
       <div className="menuCentral">
         <Link href="/acidente" className="item" >
             <img src="../legislacoes.png" alt="Registro de Acidente" />

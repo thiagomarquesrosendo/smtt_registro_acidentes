@@ -17,6 +17,7 @@ import "../../../css/menu.css"
 import "../../../css/geral.css";
 import "../../../css/formulario.css";
 import { PersistenciaDeDadosHook } from "../hooks/persistenciaDeDados.hook";
+import PopupOpcoes from "./popup-opcoes.component";
 
 export default function FormularioAcidente() {
 
@@ -71,6 +72,7 @@ export default function FormularioAcidente() {
                 <button type="button" className="exibir" onClick={() => receberDados()}>Receber</button>
                 <button type="button" className="popup" onClick={() => limparDados()}>Limpar</button>
             </div>
+
         </form>
     );
 }

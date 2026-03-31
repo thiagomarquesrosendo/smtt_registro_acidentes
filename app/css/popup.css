@@ -1,0 +1,63 @@
+.popup .fundo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fundo escuro */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Garante que fique acima de tudo */
+    border: solid 2px black;
+}
+
+.popup .fundo .cabecalho {
+    position: relative;
+    background-color: rgb(1, 12, 160);
+    color: white;
+    width: 50%;
+    min-width: 250px;
+    padding: 5px 20px;
+    border-radius: 10px 10px 0px 0px;
+}
+
+
+.popup .fundo .cabecalho button {
+    position: absolute;
+    top: 2;
+    right: 2;
+    background-color: rgb(175, 10, 10);
+    border-color: solid 1px rgb(155, 0, 0);
+    border-radius: 10px;
+    padding: 2px 12px;
+    cursor: pointer;
+}
+
+.popup .fundo .conteudo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: rgb(255, 255, 255);
+    width: 50%;
+    min-width: 250px;
+    padding: 30px;
+    border-radius: 0px 0px 8px 8px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.5);
+}
+
+.popup .fundo .conteudo button {
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.5);
+}
+
+.popup .fundo .conteudo button:nth-of-type(1) {
+    background-color: rgb(1, 12, 160);
+}
+
+.popup .fundo .conteudo button:nth-of-type(2) {
+    background-color: rgb(8, 75, 1);
+}

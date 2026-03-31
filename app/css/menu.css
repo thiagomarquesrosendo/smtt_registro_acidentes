@@ -1,0 +1,123 @@
+.menuCentral {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    padding: 20px;
+    margin: auto;
+    justify-content: center;
+}
+.menuCentral .item {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    background-color: white;
+    border: solid 2px gainsboro;
+    padding: 10px;
+    border-radius: 30px;
+    text-align: center;    
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.menuCentral .item img {
+    margin: auto;
+    height: 100px;
+}
+.menuCentral .item span {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+
+
+/*
+    ======= SIDEBAR ========
+*/
+
+.sidebar {
+    margin-block: auto;
+    margin-right: 10px;
+    cursor: pointer;
+    padding: 12px;
+}
+
+.sidebar:hover {
+    background-color: rgb(202, 172, 2);
+    transition: background-color 0.8s;
+}
+
+.sidebar .fundo {
+    position: fixed;
+    inset: calc(var(--spacing) * 0) /* 0rem = 0px */;
+    background-color: var(--color-black) /* #000 = #000000 */;
+    opacity: 70%;
+    z-index: 40;
+}
+
+.sidebar .frente {
+    background-color: rgb(202, 172, 2);
+    color: #ffffff;
+    position: fixed;
+    top: calc(var(--spacing) * 0) /* 0rem = 0px */;
+    left: calc(var(--spacing) * 0) /* 0rem = 0px */;
+    height: 100%;
+    width: calc(var(--spacing) * 64) /* 16rem = 256px */;
+    z-index: 50;
+}
+
+.sidebar .frente .cabecalho {
+    padding: calc(var(--spacing) * 4) /* 1rem = 16px */;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(152, 122, 2);
+}
+
+.sidebar .frente .cabecalho img {
+    width: 60%;
+    margin: auto;
+}
+
+.sidebar .frente .cabecalho span {
+    font-weight: bold;
+    margin: 15px 0px 5px 0px;
+}
+
+.sidebar .frente .cabecalho button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: rgb(132, 102, 2);
+    border: solid 1px rgb(127, 97, 2);
+    border-radius: 10px;
+    margin: 10px 10px 0px 0px;
+    padding: 5px 12px;
+}
+
+.sidebar .frente nav {
+    background-color: rgb(202, 172, 2);
+}
+
+.sidebar .frente nav.conteudo {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
+
+.sidebar .frente nav.conteudo a {
+    background-color: rgb(112, 82, 2);
+    padding: 10px;
+    border-radius: 15px;
+    margin: 2px 0px;
+    font-weight: bold;
+    box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+.sidebar .frente nav.conteudo a:hover {
+    background-color: rgb(132, 102, 2);
+    padding: 10px;
+    border-radius: 15px;
+    margin: 2px 0px;
+    font-weight: bold;
+    box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+

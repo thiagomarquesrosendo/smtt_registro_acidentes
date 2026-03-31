@@ -16,8 +16,8 @@ export default function FormularioLogin() {
                 </div>
                 <div className="conteudo">
                     <img src="./agtaju.png" alt="Agentes de Trânsito de Aracaju" />
-                    <input type="text" name="email" placeholder="Informe o número da Matrícula" required disabled={isLoading} />
-                    <input type="password" name="password" placeholder="Nome de guerra" required disabled={isLoading} />
+                    <input type="text" name="email" value="thiago@thiago.com" placeholder="Informe o número da Matrícula" required disabled={isLoading} readOnly />
+                    <input type="password" name="password" value="123456" placeholder="Nome de guerra" required disabled={isLoading} readOnly />
                     {error && (
                         <div className="erro">
                             <div>{error}</div>

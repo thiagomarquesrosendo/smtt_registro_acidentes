@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { getSession } from "@/lib/auth";
 import { LogoutButton } from "@/app/(pages)/login/components/logout-button.component";
+import SidebarApp from "./sidebar.component";
 
 export default async function Menu() {
     const session = await getSession()
@@ -12,7 +13,8 @@ export default async function Menu() {
     return (
         <aside>
             <nav>
-                <span>Seja bem vindo(a)!</span>
+                <SidebarApp />
+                <span>Bem vindo(a)!</span>
                 {session ? (
                     <>
                         <span>{session.name}</span>

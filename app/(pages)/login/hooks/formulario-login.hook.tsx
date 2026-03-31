@@ -39,7 +39,7 @@ export function FormularioLoginHook() {
       }
 
       // Success - redirect to dashboard
-      router.push("/acidente")
+      router.push("/")
       router.refresh()
     } catch (error) {
       setError("Erro de rede. Tente novamente.")

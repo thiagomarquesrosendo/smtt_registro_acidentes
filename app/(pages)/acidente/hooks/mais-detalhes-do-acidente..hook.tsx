@@ -15,6 +15,8 @@ export function MaisDetalhesDoAcidenteHook(form: AcidenteDTO, setForm: Dispatch<
             form.detalhesIML = checked;
         } else if (name === "detalhesAcordo") {
             form.detalhesAcordo = checked;
+        } else if (name === "detalhesAcordoNumero") {
+            form.detalhesAcordoNumero = value;
         }
 
         setForm(prevState => ({

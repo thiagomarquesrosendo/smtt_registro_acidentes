@@ -67,7 +67,6 @@ aside nav {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 10;
-    padding: 0.4em;
 }
 
 aside nav span {
@@ -85,12 +84,14 @@ aside nav span:nth-child(2) {
 }
 
 aside nav button {
-    background-color: rgb(248, 238, 93);
-    padding: 0.5em 0.9em;
-    border: 1px solid rgb(238, 228, 83);
-    border-radius: 18px;
-    margin: 5px 0px 5px 40px;
+    background-color: rgb(0, 0, 0);
+    padding: 0.3em 0.9em;
+    border: 1px solid rgb(10, 10, 10);
+    border-radius: 15px;
+    margin: 10px 0px 10px 40px;
     text-transform: uppercase;
+    color: white;
+    box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.3);
 }
 
 
@@ -98,7 +99,7 @@ aside nav button {
 
 footer {
     background-color: rgb(25, 22, 161);
-    font-size: 12px;
+    font-size: 14px;
     text-align: center;
     font-weight: bold;
     padding: 10px;

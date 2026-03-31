@@ -1,5 +1,6 @@
 import "../css/formulario.css"
 import "../css/layout.css"
+import "../css/menu.css"
 import { User } from "@/lib/userslocal";
 import bcrypt from "bcryptjs"
 import Pagina from "./layout/pagina.component";
